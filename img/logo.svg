@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 853">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Russo+One&amp;display=swap');
+      .t{font-family:'Russo One',Unbounded,Arial Black,sans-serif;text-anchor:middle}</style>
+    <linearGradient id="tn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#21426e"/><stop offset="1" stop-color="#0c1d38"/></linearGradient>
+    <linearGradient id="ts" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c1c9"/><stop offset=".5" stop-color="#7d868f"/><stop offset="1" stop-color="#5d666f"/></linearGradient>
+    <filter id="ds"><feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity=".3"/></filter>
+  
+    <linearGradient id="nv" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d3a63"/><stop offset=".5" stop-color="#11284a"/><stop offset="1" stop-color="#0a1a33"/>
+    </linearGradient>
+    <linearGradient id="nv2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a4a78"/><stop offset=".55" stop-color="#132c50"/><stop offset="1" stop-color="#0b1c36"/>
+    </linearGradient>
+    <linearGradient id="gr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2e7a52"/><stop offset=".5" stop-color="#1d5a3b"/><stop offset="1" stop-color="#123d28"/>
+    </linearGradient>
+    <linearGradient id="cu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7a57c"/><stop offset=".35" stop-color="#c8774a"/><stop offset=".7" stop-color="#a95a33"/><stop offset="1" stop-color="#d48b5e"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="6" stdDeviation="5" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <g filter="url(#sh)" stroke-linejoin="round">
+    <!-- блок 1 (левый) -->
+    <polygon points="425,348 540,266 540,515 425,465" fill="url(#nv)"/>
+    <polygon points="425,348 540,266 540,420" fill="url(#gr)"/>
+    <polygon points="425,348 540,420 540,515" fill="#0a1a33" opacity=".35"/>
+    <line x1="425" y1="348" x2="540" y2="420" stroke="#d9a07a" stroke-width="1.4" opacity=".7"/>
+    <!-- блок 2 -->
+    <polygon points="515,162 620,88 620,515 562,515 562,238 515,262" fill="url(#nv2)"/>
+    <polygon points="515,162 620,88 620,236" fill="url(#gr)"/>
+    <polygon points="562,238 620,236 620,515 562,515" fill="#0a1a33" opacity=".3"/>
+    <line x1="515" y1="162" x2="620" y2="236" stroke="#d9a07a" stroke-width="1.4" opacity=".7"/>
+    <!-- блок 3 (центральный, самый высокий) -->
+    <polygon points="640,18 757,76 757,196 690,372 690,515 640,515" fill="url(#nv)"/>
+    <polygon points="640,18 757,76 757,196 640,110" fill="url(#cu)"/>
+    <polygon points="640,110 757,196 690,372 640,300" fill="#0a1a33" opacity=".35"/>
+    <line x1="640" y1="110" x2="757" y2="196" stroke="#f0c09c" stroke-width="1.6" opacity=".9"/>
+    <polygon points="640,18 757,76 757,196 640,110" fill="url(#sheen)"/>
+    <!-- блок 4 (правый) -->
+    <polygon points="710,372 843,284 843,515 710,515" fill="url(#nv2)"/>
+    <polygon points="710,372 843,284 843,384 710,482" fill="url(#cu)"/>
+    <polygon points="710,372 843,284 843,384 710,482" fill="url(#sheen)"/>
+    <line x1="710" y1="482" x2="843" y2="384" stroke="#f0c09c" stroke-width="1.6" opacity=".9"/>
+  </g>
+  <g filter="url(#ds)">
+    <text class="t" x="640" y="612" font-size="98" fill="url(#tn)" textLength="750" lengthAdjust="spacingAndGlyphs">ЭНЕРДЖИ</text>
+    <text class="t" x="640" y="690" font-size="74" fill="url(#ts)" textLength="750" lengthAdjust="spacingAndGlyphs">ТЕХНОЛОДЖИ</text>
+    <text class="t" x="640" y="756" font-size="64" fill="url(#tn)" textLength="300" lengthAdjust="spacingAndGlyphs">ГРУПП</text>
+  </g>
+  <line x1="300" y1="790" x2="555" y2="790" stroke="#7d868f" stroke-width="3"/>
+  <line x1="725" y1="790" x2="980" y2="790" stroke="#7d868f" stroke-width="3"/>
+  <text class="t" x="640" y="806" font-size="40" fill="url(#ts)">ЗАО</text>
+</svg>

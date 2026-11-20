@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Проект Пермь — Энерджи Технолоджи Групп</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<script src="vendor/chart.umd.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<style>
+:root{
+ --bg:#0b0c0e;--bg1:#111317;--bg2:#16191e;--ln:#23272e;--ln2:#2f343c;
+ --tx:#eceae6;--mu:#8a8f98;--dim:#5b616b;
+ --cu:#c8774a;--cu2:#e2a27a;--gr:#ecd3b4;--nv:#8a8076;
+ --mono:'JetBrains Mono',ui-monospace,monospace;--sans:'Inter Tight',system-ui,sans-serif;
+}
+*{box-sizing:border-box}html.lenis,html.lenis body{height:auto}.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.w{max-width:1280px;margin:0 auto;padding:0 32px}@media(max-width:700px){.w{padding:0 16px}}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+header{position:fixed;inset:0 0 auto;z-index:20;border-bottom:1px solid transparent;transition:.25s}
+header.s{background:rgba(11,12,14,.92);backdrop-filter:blur(6px);border-color:var(--ln)}
+.nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:14px;letter-spacing:.02em}
+.brand img{height:30px}
+.nav nav{display:flex;gap:28px}.nav nav a{font-size:13px;color:var(--mu)}.nav nav a:hover{color:var(--tx)}
+.nav nav a b{font-family:var(--mono);font-weight:400;color:var(--dim);margin-right:6px;font-size:11px}
+@media(max-width:900px){.nav nav{display:none}}@media(max-width:600px){.brand{font-size:11px}.nav .btn{display:none}}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border:1px solid var(--ln2);font-size:14px;font-weight:500;cursor:pointer;background:transparent;color:var(--tx);transition:.2s;font-family:var(--sans)}
+.btn:hover{border-color:var(--tx)}
+.btn.p{background:var(--tx);color:var(--bg);border-color:var(--tx)}.btn.p:hover{background:var(--cu2);border-color:var(--cu2)}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--ln)}
+.hero .bg{position:absolute;inset:0;background:url(img/n_aerial.webp) center 60%/cover;animation:kb 30s ease-in-out infinite alternate;will-change:transform}
+.hero .bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,14,.7) 0%,rgba(11,12,14,.42) 35%,var(--bg) 100%)}
+.hero .w{position:relative;padding-top:140px}
+.hero h1{font-size:clamp(56px,11vw,168px);font-weight:600;letter-spacing:-.045em;line-height:.88;margin:22px 0 0}
+.hero h1 em{font-style:normal;color:var(--cu2)}
+.hero .sub{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin:40px 0 56px;align-items:end}
+.hero .sub p{margin:0;font-size:19px;color:#c9c6c0;max-width:520px;font-weight:300}
+.hero .sub .act{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:800px){.hero .sub{grid-template-columns:1fr}.hero .sub .act{justify-content:flex-start}}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ln)}
+.strip>div{padding:26px 24px 30px;border-right:1px solid var(--ln)}.strip>div:first-child{padding-left:0}.strip>div:last-child{border-right:0}
+.strip .v{font-family:var(--mono);font-size:clamp(26px,3.2vw,42px);font-weight:500;letter-spacing:-.03em;margin-top:10px}
+.strip .v small{font-size:.45em;color:var(--mu);margin-left:6px;letter-spacing:0}
+@media(max-width:800px){.strip{grid-template-columns:1fr 1fr}.strip>div{padding-left:0!important}.strip>div:nth-child(2){border-right:0}.strip>div:nth-child(-n+2){border-bottom:1px solid var(--ln)}}
+section{border-bottom:1px solid var(--ln)}
+.sec{padding:120px 32px}@media(max-width:700px){.sec{padding:72px 16px}}
+.head{display:grid;grid-template-columns:200px 1fr;gap:32px;margin-bottom:64px}
+.head h2{font-size:clamp(34px,4.6vw,64px);font-weight:500;letter-spacing:-.035em;line-height:1;margin:0}
+.head p{color:var(--mu);max-width:560px;margin:20px 0 0;font-size:17px}
+@media(max-width:800px){.head{grid-template-columns:1fr;gap:12px;margin-bottom:40px}}
+.rules{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ln)}
+.rules>div{padding:28px 24px 8px;border-right:1px solid var(--ln)}.rules>div:first-child{padding-left:0}.rules>div:last-child{border-right:0}
+.rules .n{font-family:var(--mono);color:var(--cu2);font-size:13px}
+.rules h3{font-size:22px;font-weight:500;letter-spacing:-.02em;margin:40px 0 10px}
+.rules p{color:var(--mu);font-size:15px;margin:0 0 20px}
+.rules .big{font-family:var(--mono);font-size:14px;color:var(--tx);border-top:1px solid var(--ln);padding-top:14px}
+@media(max-width:900px){.rules{grid-template-columns:1fr 1fr}.rules>div{padding:24px 16px!important;border-bottom:1px solid var(--ln)}.rules>div:nth-child(2n){border-right:0}}
+.calc{display:grid;grid-template-columns:380px 1fr;border:1px solid var(--ln)}
+@media(max-width:1000px){.calc{grid-template-columns:1fr}}
+.ctl{border-right:1px solid var(--ln);background:var(--bg1)}
+@media(max-width:1000px){.ctl{border-right:0;border-bottom:1px solid var(--ln)}}
+.ctl .t{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--ln)}
+.ctl .t button{background:none;border:0;color:var(--mu);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}.ctl .t button:hover{color:var(--tx)}
+.grp{padding:4px 22px 12px;border-bottom:1px solid var(--ln)}.grp:last-child{border-bottom:0}
+.grp>.lab{display:block;padding:14px 0 4px;color:var(--dim)}
+.sl{padding:9px 0}
+.sl .r{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:#c9c6c0;margin-bottom:9px}.sl .r b{font-family:var(--mono);font-weight:500;color:var(--tx)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--ln2);outline:0;margin:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--tx);border:0;cursor:pointer;transition:.15s}
+input[type=range]::-webkit-slider-thumb:hover{background:var(--cu2);transform:scale(1.25)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--tx);border:0;border-radius:0}
+.out{display:flex;flex-direction:column;min-width:0}
+.res{display:grid;grid-template-columns:repeat(3,1fr)}
+.res>div{padding:22px 24px;border-right:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.res>div:nth-child(3n){border-right:0}
+.res .v{font-family:var(--mono);font-size:clamp(22px,2.4vw,32px);font-weight:500;letter-spacing:-.03em;margin-top:8px}
+.res .v.hl{color:var(--cu2)}
+@media(max-width:600px){.res{grid-template-columns:1fr 1fr}.res>div{border-right:1px solid var(--ln)!important}.res>div:nth-child(2n){border-right:0!important}}
+.cb{padding:22px 24px;flex:1;min-height:400px;position:relative}
+.cb .ch{position:absolute;inset:60px 24px 20px}
+.leg{display:flex;gap:20px;flex-wrap:wrap}.leg span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mu)}.leg i{width:10px;height:10px;display:inline-block}
+.cg{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ln);border-left:1px solid var(--ln)}
+.cg>div{border-right:1px solid var(--ln);border-bottom:1px solid var(--ln);padding:26px 26px 22px;min-width:0}
+.cg h3{font-size:20px;font-weight:500;letter-spacing:-.02em;margin:10px 0 4px}.cg p{margin:0 0 18px;color:var(--mu);font-size:14px}
+.cg .box{height:300px;position:relative}
+@media(max-width:900px){.cg{grid-template-columns:1fr}}
+.tw{border:1px solid var(--ln);max-height:560px;overflow:auto}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{padding:10px 14px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--ln)}
+th{position:sticky;top:0;background:var(--bg2);color:var(--mu);font-weight:400;font-size:11px;letter-spacing:.06em;text-transform:uppercase;z-index:1}
+tbody tr:hover td{background:var(--bg1)}
+td:first-child,th:first-child{text-align:left;color:var(--mu)}
+tr.pb td{background:rgba(236,211,180,.08)}tr.pb td:first-child{color:var(--gr);box-shadow:inset 2px 0 var(--gr)}
+tr.hv td{background:rgba(200,119,74,.10)}tr.hv td:first-child{color:var(--cu2);box-shadow:inset 2px 0 var(--cu)}
+tfoot th{position:sticky;bottom:0;background:var(--bg2);color:var(--tx);font-size:12.5px;text-transform:none;letter-spacing:0}
+.tbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.note{color:var(--dim);font-size:13px;margin-top:16px;max-width:760px}
+.mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:1px;background:var(--ln);border:1px solid var(--ln)}
+.mosaic figure{margin:0;position:relative;overflow:hidden;background:var(--bg)}
+.mosaic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s;filter:brightness(.85)}
+.mosaic figure:hover img{transform:scale(1.05);filter:brightness(1)}
+.mosaic figcaption{position:absolute;left:0;bottom:0;padding:12px 16px;background:rgba(11,12,14,.85);font-size:13px}
+.mosaic figcaption b{font-family:var(--mono);font-weight:400;color:var(--cu2);margin-right:10px}
+.m1{grid-column:span 2;grid-row:span 2}.m2{grid-row:span 3}.m5{grid-column:span 3;grid-row:span 2}
+.m5 img{object-position:center 40%}
+@media(max-width:800px){.mosaic{grid-template-columns:1fr;grid-auto-rows:240px}.m1,.m2,.m3,.m4,.m5{grid-column:auto;grid-row:auto}}
+.band{position:relative;height:clamp(220px,32vw,420px);overflow:hidden;border-bottom:1px solid var(--ln)}
+.band img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;will-change:transform}
+.band:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),transparent 30%,transparent 70%,var(--bg))}
+.band .q{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;text-align:center;padding:0 20px}
+.band .q span{font-size:clamp(26px,4vw,54px);font-weight:500;letter-spacing:-.03em;max-width:900px;line-height:1.05}
+.band .q em{font-style:normal;color:var(--cu2)}
+.gal{display:grid;grid-template-columns:2fr 1fr;gap:1px;background:var(--ln);border:1px solid var(--ln)}
+.gal figure{margin:0;position:relative;overflow:hidden;background:var(--bg);min-height:260px}
+.gal figure:first-child{grid-row:span 2}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.35) contrast(1.05);transition:filter .5s,transform 1s}
+.gal figure:hover img{filter:none;transform:scale(1.03)}
+.gal figcaption{position:absolute;left:0;bottom:0;padding:12px 16px;background:rgba(11,12,14,.85);font-size:13px}
+.gal figcaption b{font-family:var(--mono);font-weight:400;color:var(--cu2);margin-right:10px}
+@media(max-width:800px){.gal{grid-template-columns:1fr}.gal figure:first-child{grid-row:auto}}
+.spec{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px}
+.spec>div{border-right:1px solid var(--ln);padding:6px 24px}.spec>div:first-child{padding-left:0}.spec>div:last-child{border-right:0}
+.spec h3{font-size:20px;font-weight:500;margin:14px 0 16px;letter-spacing:-.02em}
+.spec dl{margin:0;display:grid;grid-template-columns:auto 1fr;font-size:14px}
+.spec dt{color:var(--mu);padding:9px 0;border-top:1px solid var(--ln)}.spec dd{margin:0;text-align:right;font-family:var(--mono);padding:9px 0;border-top:1px solid var(--ln)}
+@media(max-width:900px){.spec{grid-template-columns:1fr}.spec>div{border-right:0;padding:6px 0}}
+footer .w{padding-top:48px;padding-bottom:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;color:var(--dim);font-size:13px}
+#pre{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .7s,visibility .7s}
+#pre.off{opacity:0;visibility:hidden}
+#pre img{width:84px;animation:pf 1.6s ease-in-out infinite}
+#pre .bar{width:180px;height:1px;background:var(--ln2);overflow:hidden}#pre .bar i{display:block;height:100%;width:0;background:var(--cu2);transition:width .5s}
+#pre .lab{color:var(--dim)}
+@keyframes pf{50%{opacity:.55;transform:translateY(-4px)}}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}.hero h1 .ln>span{display:inline-block;transform:translateY(110%)}.hero h1.go .ln>span{animation:up 1.2s cubic-bezier(.16,1,.3,1) .4s forwards}.hero h1.go .ln+.ln>span{animation-delay:.52s}.hero h1.done .ln>span{transform:none;animation:none}@keyframes up{to{transform:none}}
+.mq{border-bottom:1px solid var(--ln);overflow:hidden;white-space:nowrap;padding:16px 0;background:var(--bg1)}
+.paused,.paused *{animation-play-state:paused!important}
+.mq .tr{display:inline-flex;will-change:transform;gap:48px;animation:mq 40s linear infinite;padding-right:48px}
+.mq span{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}.mq span b{color:var(--cu2);font-weight:500}
+.mq span:after{content:"\25C6";margin-left:48px;color:var(--ln2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+#story{border-bottom:1px solid var(--ln);overflow:hidden}
+.st-in{height:100vh;display:flex;flex-direction:column;justify-content:center}
+.st-top{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:40px}
+.st-top h2{font-size:clamp(34px,4.6vw,64px);font-weight:500;letter-spacing:-.035em;line-height:1;margin:10px 0 0}
+.st-prog{width:220px;height:1px;background:var(--ln2)}.st-prog i{display:block;height:100%;width:0;background:var(--cu2)}
+.track{display:flex;will-change:transform;padding-left:max(32px,calc((100vw - 1280px)/2 + 32px))}
+.ms{flex:0 0 min(440px,82vw);border-left:1px solid var(--ln);padding:0 36px 0 28px;position:relative}
+.ms .mn{font-family:var(--sans);font-weight:600;font-size:clamp(90px,11vw,170px);letter-spacing:-.06em;line-height:.9;color:transparent;-webkit-text-stroke:1px var(--cu2);transition:color .5s}
+.ms.on .mn{color:var(--cu2)}
+.ms .mm{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mu);text-transform:uppercase;margin:14px 0 18px}
+.ms h3{font-size:26px;font-weight:500;letter-spacing:-.02em;margin:0 0 10px}
+.ms p{color:var(--mu);margin:0 0 22px;font-size:15px;max-width:340px}
+.ms dl{display:grid;grid-template-columns:auto 1fr;margin:0;font-size:14px;max-width:340px}
+.ms dt{color:var(--mu);padding:8px 0;border-top:1px solid var(--ln)}.ms dd{margin:0;text-align:right;font-family:var(--mono);padding:8px 0;border-top:1px solid var(--ln)}
+@media(max-width:800px){.st-in{height:auto;padding:72px 0}.track{flex-direction:column;gap:40px;padding:0 16px}.ms{flex:auto;padding:0 0 0 20px}.ms .mn{color:var(--cu2)}.st-prog{display:none}}
+.mine{display:grid;grid-template-columns:1fr 2fr;border:1px solid var(--ln);border-top:0}
+.mine .in{padding:26px 24px;border-right:1px solid var(--ln);background:var(--bg1)}
+.mine .in label{display:block;margin-bottom:12px}
+.mine .in .fld{display:flex;align-items:center;border-bottom:1px solid var(--ln2);padding-bottom:8px}
+.mine .in .fld span{font-family:var(--mono);font-size:28px;color:var(--mu)}
+.mine input[type=number]{background:none;border:0;color:var(--tx);font-family:var(--mono);font-size:34px;width:100%;outline:0;letter-spacing:-.03em;-moz-appearance:textfield}
+.mine input::-webkit-outer-spin-button,.mine input::-webkit-inner-spin-button{-webkit-appearance:none}
+.mine .ch2{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.mine .ch2 button{background:none;border:1px solid var(--ln2);color:var(--mu);font-family:var(--mono);font-size:12px;padding:6px 10px;cursor:pointer}.mine .ch2 button:hover{color:var(--tx);border-color:var(--tx)}
+.mine .o{display:grid;grid-template-columns:repeat(4,1fr)}
+.mine .o>div{padding:26px 24px;border-right:1px solid var(--ln)}.mine .o>div:last-child{border-right:0}
+.mine .o .v{font-family:var(--mono);font-size:clamp(22px,2.4vw,32px);font-weight:500;letter-spacing:-.03em;margin-top:8px}
+.mine .o .v.hl{color:var(--cu2)}
+.mine .o small{display:block;color:var(--dim);font-size:12px;margin-top:6px}
+@media(max-width:1000px){.mine{grid-template-columns:1fr}.mine .in{border-right:0;border-bottom:1px solid var(--ln)}.mine .o{grid-template-columns:1fr 1fr}.mine .o>div{border-bottom:1px solid var(--ln)}}
+#cur{position:fixed;left:0;top:0;width:28px;height:28px;border:1px solid var(--cu2);border-radius:50%;pointer-events:none;z-index:150;transition:width .25s,height .25s,background .25s,opacity .3s,margin .25s;opacity:0}
+#cur.big{width:64px;height:64px;margin:-18px 0 0 -18px;background:rgba(226,162,122,.12)}
+@media(pointer:coarse){#cur{display:none}}
+.scn{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ln)}
+.scn button{background:none;border:0;border-right:1px solid var(--ln);color:var(--mu);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:14px 6px;cursor:pointer;transition:.2s}
+.scn button:last-child{border-right:0}.scn button:hover{color:var(--tx)}.scn button.on{color:var(--bg);background:var(--cu2)}
+.ue{margin-top:64px;border:1px solid var(--ln)}
+.ue-h{display:flex;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--ln);background:var(--bg1)}
+.ue-g{display:grid;grid-template-columns:repeat(2,1fr)}
+.ue-c{padding:22px;border-right:1px solid var(--ln)}.ue-c:last-child{border-right:0}
+.ue-c h4{margin:0 0 14px;font-size:18px;font-weight:500;letter-spacing:-.01em}.ue-c h4 small{color:var(--mu);font-weight:400;font-size:13px;margin-left:8px}
+.ue-r{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--ln);font-size:14px}
+.ue-r span{color:var(--mu)}.ue-r b{font-family:var(--mono);font-weight:500}.ue-r.neg b{color:#c98b7a}.ue-r.tot b{color:var(--cu2);font-size:18px}
+.ue-bar{height:6px;background:var(--ln);margin-top:4px;grid-column:1/-1;position:relative}.ue-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--cu2)}
+@media(max-width:800px){.ue-g{grid-template-columns:1fr}.ue-c{border-right:0;border-bottom:1px solid var(--ln)}}
+.hm{display:grid;grid-template-columns:28px 1fr;grid-template-rows:1fr auto;gap:10px}
+.hm-y{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;align-self:center}
+.hm-x{grid-column:2;text-align:center}
+.hm-w{overflow:auto}
+#hm{border-collapse:separate;border-spacing:2px;width:100%;font-family:var(--mono)}
+#hm th{position:static;background:none;color:var(--mu);font-size:11px;padding:8px;text-align:center;border:0}
+#hm td{text-align:center;padding:16px 6px;font-size:14px;border:0;color:#fff;transition:outline .2s}
+#hm td small{display:block;font-size:10px;opacity:.75;margin-top:3px}
+#hm td.me{outline:2px solid var(--tx);outline-offset:-2px}
+.hm-leg{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--mu)}.hm-leg i{display:inline-block;width:10px;height:10px;margin-right:8px}
+.hm-leg .cur{margin-left:auto;font-family:var(--mono);font-size:11px}
+.ts dl{display:grid;grid-template-columns:minmax(200px,1fr) 2fr;margin:0;border-top:1px solid var(--ln)}
+.ts dt{color:var(--mu);padding:18px 0;border-bottom:1px solid var(--ln);font-size:15px}
+.ts dd{margin:0;padding:18px 0;border-bottom:1px solid var(--ln);font-size:17px}
+.ts dd.mono{font-size:18px;color:var(--cu2)}
+@media(max-width:700px){.ts dl{grid-template-columns:1fr}.ts dt{border-bottom:0;padding-bottom:2px}.ts dd{padding-top:2px}}
+.rk{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ln);border-left:1px solid var(--ln)}
+.rk>div{padding:26px;border-right:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.rk .n{font-family:var(--mono);color:var(--cu2);font-size:12px}
+.rk h3{font-size:21px;font-weight:500;letter-spacing:-.02em;margin:28px 0 10px}
+.rk p{color:var(--mu);font-size:14.5px;margin:0 0 18px}
+.rk b{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--tx);border-top:1px solid var(--ln);display:block;padding-top:12px}
+@media(max-width:900px){.rk{grid-template-columns:1fr}}
+.cta-s .w{padding-top:140px;padding-bottom:140px;text-align:center;position:relative}
+.cta-s:before{content:"";position:absolute;inset:0;background:url(img/n_lines.webp) center/cover;opacity:.18}
+.cta-s{position:relative;overflow:hidden}
+.cta-s h2{font-size:clamp(32px,4.8vw,66px);font-weight:500;letter-spacing:-.035em;line-height:1.02;margin:22px auto 40px;max-width:1000px}
+.cta-a{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-s .note{margin:40px auto 0}
+#cur{display:none!important}
+
+/* compact calculator */
+.calc{grid-template-columns:1fr!important}
+.ctl{border-right:0!important;border-bottom:1px solid var(--ln)}
+.ctl .t{gap:16px}
+.ctl .t .scn{display:flex;border:1px solid var(--ln);margin-left:auto}.ctl .t .scn button{padding:9px 16px}@media(max-width:600px){.ctl .t{flex-wrap:wrap}.ctl .t .scn{order:3;width:100%;margin:0}.ctl .t .scn button{flex:1}}
+#sliders{display:grid;grid-template-columns:repeat(4,1fr)}
+#sliders .grp{border-bottom:0;border-right:1px solid var(--ln);padding:2px 20px 10px}
+#sliders .grp:last-child{border-right:0}
+#sliders .grp>.lab{padding:12px 0 2px}
+.sl{padding:6px 0}.sl .r{font-size:13px;margin-bottom:6px}
+.res{grid-template-columns:repeat(6,1fr)}
+.res>div{padding:16px 20px;border-bottom:1px solid var(--ln)!important;border-right:1px solid var(--ln)!important}
+.res>div:last-child{border-right:0!important}
+.res .v{font-size:clamp(20px,1.9vw,26px)}
+.cb{min-height:340px}.cb .ch{inset:52px 24px 18px}
+@media(max-width:1100px){#sliders{grid-template-columns:repeat(2,1fr)}#sliders .grp:nth-child(2){border-right:0}#sliders .grp:nth-child(-n+2){border-bottom:1px solid var(--ln)}.res{grid-template-columns:repeat(3,1fr)}.res>div:nth-child(3n){border-right:0!important}}
+@media(max-width:600px){#sliders{grid-template-columns:1fr}#sliders .grp{border-right:0;border-bottom:1px solid var(--ln)}.res{grid-template-columns:1fr 1fr}.res>div:nth-child(3n){border-right:1px solid var(--ln)!important}.res>div:nth-child(2n){border-right:0!important}}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.1) translate(-1%,-1%)}}
+.hero{overflow:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+.gal figure .c{opacity:0;transition:opacity .7s}.gal figure:hover .c{opacity:1}
+.gal img{filter:none!important}
+.sec{position:relative}
+.sec:before{content:attr(data-n);position:absolute;right:32px;top:70px;font-family:var(--sans);font-weight:600;font-size:clamp(120px,18vw,260px);line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px var(--ln2);pointer-events:none}
+.head,.rules,.calc,.cg,.tbar,.tw,.gal,.spec{position:relative}
+.hero h1 em{background:linear-gradient(100deg,#f3c9a8 0%,#c8774a 45%,#8e4a28 70%,#e2a27a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="pre"><img src="img/mark.svg" alt=""><div class="bar"><i id="preb"></i></div><span class="lab">Энерджи Технолоджи Групп</span></div><div id="cur"></div>
+<header id="hd"><div class="w nav">
+ <a class="brand" href="#top"><img src="img/mark.svg" alt="">ЭНЕРДЖИ ТЕХНОЛОДЖИ ГРУПП</a>
+ <nav><a href="#model"><b>01</b>Модель</a><a href="#calc"><b>02</b>Калькулятор</a><a href="#charts"><b>03</b>Динамика</a><a href="#sens"><b>04</b>Сценарии</a><a href="#terms"><b>06</b>Условия</a><a href="#risks"><b>07</b>Риски</a><a href="#project"><b>08</b>Объект</a></nav>
+ <a class="btn" href="#calc">Рассчитать</a>
+</div></header>
+
+<section class="hero" id="top">
+ <div class="bg"></div>
+ <div class="w">
+  <span class="lab rv">Пермский край · Добрянка · 58.4612° N 56.4127° E</span>
+  <h1 id="h1"><span class="ln"><span>Проект</span></span><span class="ln"><span><em>Пермь</em></span></span></h1>
+  <div class="sub">
+   <p class="rv">Иммерсионная майнинг-ферма с реинвестированием. Старт — 581 Antminer Z15 Pro, после 22-го месяца рост за счёт Antminer X9. Горизонт расчёта — 60 месяцев.</p>
+   <div class="act rv"><a class="btn p" href="#calc">Открыть калькулятор</a><a class="btn" href="#table">Таблица</a></div>
+  </div>
+ </div>
+ <div class="w"><div class="strip">
+  <div class="rv"><span class="lab">Окупаемость</span><div class="v" id="k1">—</div></div>
+  <div class="rv"><span class="lab">Инвестору за 60 мес.</span><div class="v" id="k2">—</div></div>
+  <div class="rv"><span class="lab">Чистый доход</span><div class="v" id="k3">—</div></div>
+  <div class="rv"><span class="lab">Парк на 60-й мес.</span><div class="v" id="k4">—</div></div>
+ </div></div>
+</section>
+
+<div class="mq" aria-hidden="true"><div class="tr" id="mqt"></div></div>
+<section id="model"><div class="w sec" data-n="01">
+ <div class="head rv"><span class="lab">01 — Модель</span><div><h2>Четыре правила расчёта</h2><p>Логика полностью повторяет таблицу «Пермь». Доходность ASIC — WhatToMine на 20.11.2026.</p></div></div>
+ <div class="rules">
+  <div class="rv"><span class="n">01</span><h3>Доход</h3><p>Выручка WhatToMine минус комиссия пула и электроэнергия. Других вычетов нет.</p><div class="big">−2% пул · $0,045/кВт·ч</div></div>
+  <div class="rv"><span class="n">02</span><h3>Распределение</h3><p>Реинвест / инвестор / компания. Переключение — в месяц окупаемости.</p><div class="big">50/40/10 → 20/40/40</div></div>
+  <div class="rv"><span class="n">03</span><h3>Рост парка</h3><p>Реинвест покупает целые ASIC, остаток переносится. Старый парк не списывается.</p><div class="big">Z15 Pro → X9 с 23 мес.</div></div>
+  <div class="rv"><span class="n">04</span><h3>Халвинг</h3><p>Награда ZEC падает вдвое. Z15 Pro продолжают майнить, у Monero халвинга нет.</p><div class="big">с 24 мес. · Z15 Pro ×0,5</div></div>
+ </div>
+ <div class="ue rv">
+  <div class="ue-h"><span class="lab">Экономика одного ASIC в месяц</span><span class="lab">WhatToMine · 20.11.2026</span></div>
+  <div class="ue-g" id="ue"></div>
+ </div>
+</div></section>
+
+<section id="story"><div class="st-in">
+ <div class="w"><div class="st-top"><div><span class="lab">Хроника</span><h2>60 месяцев за одну прокрутку</h2></div><div class="st-prog"><i id="stp"></i></div></div></div>
+ <div class="track" id="track"></div>
+</div></section>
+<section id="calc"><div class="w sec" data-n="02">
+ <div class="head rv"><span class="lab">02 — Калькулятор</span><div><h2>Сценарий в реальном времени</h2><p>Двигайте параметры — 60 месяцев пересчитываются мгновенно.</p></div></div>
+ <div class="calc rv">
+  <div class="ctl"><div class="t"><span class="lab">Допущения</span><div class="scn" id="scn"><button data-s="base" class="on">Базовый</button><button data-s="cons">Консервативный</button><button data-s="stress">Стресс</button></div><button id="reset">Сбросить</button></div>
+   <div id="sliders"></div></div>
+  <div class="out">
+   <div class="res">
+    <div><span class="lab">Окупаемость, мес.</span><div class="v hl" id="r1">—</div></div>
+    <div><span class="lab">Инвестору</span><div class="v" id="r2">—</div></div>
+    <div><span class="lab">Компании</span><div class="v" id="r3">—</div></div>
+    <div><span class="lab">Реинвест</span><div class="v" id="r4">—</div></div>
+    <div><span class="lab">Чистый доход</span><div class="v" id="r5">—</div></div>
+    <div><span class="lab">Z15 Pro / X9</span><div class="v" id="r6">—</div></div>
+   </div>
+   <div class="cb"><div class="leg"><span><i style="background:var(--cu)"></i>Реинвест</span><span><i style="background:var(--gr)"></i>Инвестор</span><span><i style="background:var(--nv)"></i>Компания</span></div><div class="ch"><canvas id="cMain"></canvas></div></div>
+  </div>
+ </div>
+<div class="mine rv">
+  <div class="in"><label class="lab" for="myinv">Ваши вложения</label><div class="fld"><span>$</span><input type="number" id="myinv" min="1000" step="1000" value="100000"></div>
+   <div class="ch2"><button data-v="50000">50k</button><button data-v="100000">100k</button><button data-v="500000">500k</button><button data-v="1000000">1M</button></div></div>
+  <div class="o">
+   <div><span class="lab">Ваша доля</span><div class="v" id="m1">—</div><small id="m1s"></small></div>
+   <div><span class="lab">Получите за 60 мес.</span><div class="v hl" id="m2">—</div><small id="m2s"></small></div>
+   <div><span class="lab">Мультипликатор</span><div class="v" id="m3">—</div><small>выплаты / вложения</small></div>
+   <div><span class="lab">В месяц после окупаемости</span><div class="v" id="m4">—</div><small>в среднем</small></div>
+  </div>
+ </div>
+</div></section>
+<div class="band"><img src="img/n_lines.webp" alt="" data-px><div class="q"><span>Каждый месяц доход <em>реинвестируется</em> в новые ASIC — парк растёт сам</span></div></div>
+<section id="charts"><div class="w sec" data-n="03">
+ <div class="head rv"><span class="lab">03 — Динамика</span><div><h2>Как растёт проект</h2></div></div>
+ <div class="cg">
+  <div class="rv"><span class="lab">Парк</span><h3>ASIC в работе</h3><p>Z15 Pro растут до 22-го месяца, далее докупаются X9.</p><div class="box"><canvas id="cFleet"></canvas></div></div>
+  <div class="rv"><span class="lab">Инвестор</span><h3>Выплаты нарастающим итогом</h3><p>Пунктир — стоимость стартового парка.</p><div class="box"><canvas id="cCum"></canvas></div></div>
+  <div class="rv"><span class="lab">Доход</span><h3>Чистый доход по годам</h3><p>Вклад Z15 Pro и X9.</p><div class="box"><canvas id="cYear"></canvas></div></div>
+  <div class="rv"><span class="lab">Итог</span><h3>Распределение за 60 месяцев</h3><p>Реинвест, инвестор и компания.</p><div class="box"><canvas id="cPie"></canvas></div></div>
+ </div>
+</div></section>
+
+<section id="sens"><div class="w sec" data-n="04">
+ <div class="head rv"><span class="lab">04 — Чувствительность</span><div><h2>Что будет, если рынок изменится</h2><p>Месяц окупаемости при разной доходности ASIC и цене электроэнергии. Остальные параметры — как в калькуляторе.</p></div></div>
+ <div class="hm rv"><div class="hm-y lab">Электроэнергия, $/кВт·ч</div><div class="hm-w"><table id="hm"></table></div><div class="hm-x lab">Доходность ASIC относительно WhatToMine</div></div>
+ <div class="hm-leg rv"><span><i style="background:#e2b48c"></i>до 24 мес.</span><span><i style="background:#a8633d"></i>25–36 мес.</span><span><i style="background:#5e3826"></i>37–60 мес.</span><span><i style="background:#1c1714;outline:1px solid #2f343c"></i>не окупается за 60 мес.</span><span class="cur">рамка — текущий сценарий</span></div>
+</div></section>
+
+<section id="table"><div class="w sec" data-n="05">
+ <div class="head rv"><span class="lab">05 — Таблица</span><div><h2>60 месяцев помесячно</h2></div></div>
+ <div class="tbar rv"><div class="leg"><span><i style="background:var(--gr)"></i>Окупаемость</span><span><i style="background:var(--cu)"></i>Халвинг ZEC</span></div><button class="btn p" id="xls">Скачать Excel</button></div>
+ <div class="tw rv"><table id="tb"></table></div>
+ <p class="note">Суммы в долларах США. Доходность ASIC зафиксирована на 20.11.2026; рост сложности сети и изменение курсов не моделируются. Расчёт не является гарантией доходности.</p>
+</div></section>
+
+<section id="terms"><div class="w sec" data-n="06">
+ <div class="head rv"><span class="lab">06 — Условия</span><div><h2>Структура участия</h2><p>Основные параметры инвестиционной модели. Финальные условия фиксируются в договоре.</p></div></div>
+ <div class="ts rv">
+  <dl>
+   <dt>Объект вложений</dt><dd>Стартовый парк 581 Antminer Z15 Pro</dd>
+   <dt>Сумма стартового парка</dt><dd class="mono" id="t_inv">—</dd>
+   <dt>Горизонт модели</dt><dd>60 месяцев</dd>
+   <dt>Распределение до окупаемости</dt><dd>50% реинвест · 40% инвестор · 10% компания</dd>
+   <dt>Распределение после окупаемости</dt><dd>20% реинвест · 40% инвестор · 40% компания</dd>
+   <dt>Окупаемость (базовый сценарий)</dt><dd class="mono" id="t_pb">—</dd>
+   <dt>Выплаты инвестору за 60 мес.</dt><dd class="mono" id="t_i">—</dd>
+   <dt>Периодичность выплат</dt><dd>ежемесячно</dd>
+   <dt>Вычеты до распределения</dt><dd>электроэнергия и комиссия пула</dd>
+  </dl>
+ </div>
+</div></section>
+
+<section id="risks"><div class="w sec" data-n="07">
+ <div class="head rv"><span class="lab">07 — Риски</span><div><h2>Риски и как с ними работать</h2><p>Майнинг — рыночный бизнес. Вот что влияет на результат сильнее всего.</p></div></div>
+ <div class="rk">
+  <div class="rv"><span class="n">R1</span><h3>Сложность сети</h3><p>Рост хэшрейта сети снижает доход каждого ASIC. В калькуляторе — параметр «Падение доходности».</p><b>Сценарий «Консервативный»: −2%/мес</b></div>
+  <div class="rv"><span class="n">R2</span><h3>Курс ZEC и XMR</h3><p>Доход в долларах напрямую зависит от курса монет. Диверсификация на две монеты снижает зависимость от одной.</p><b>Сценарий «Стресс»: −30% к доходу</b></div>
+  <div class="rv"><span class="n">R3</span><h3>Халвинг ZEC</h3><p>С 24-го месяца награда Zcash падает вдвое. Уже учтено в базовой модели, поэтому рост идёт за счёт X9.</p><b>Учтено в модели</b></div>
+  <div class="rv"><span class="n">R4</span><h3>Регулирование</h3><p>Майнинг в РФ требует регистрации в реестре ФНС; в ряде регионов действуют сезонные ограничения.</p><b>Проверяется юристами</b></div>
+  <div class="rv"><span class="n">R5</span><h3>Энергия</h3><p>Собственная газовая генерация фиксирует себестоимость электроэнергии и снижает зависимость от сети.</p><b>$0,045/кВт·ч в модели</b></div>
+  <div class="rv"><span class="n">R6</span><h3>Оборудование</h3><p>Иммерсионное охлаждение снижает перегрев и износ ASIC, продлевая срок службы.</p><b>FOG Hashing</b></div>
+ </div>
+</div></section>
+
+<div class="band"><img src="img/n_macro.webp" alt="" data-px style="object-position:center 60%"><div class="q"><span>Иммерсионное охлаждение — <em>тише, холоднее, дольше</em></span></div></div>
+<section id="project"><div class="w sec" data-n="08">
+ <div class="head rv"><span class="lab">08 — Объект</span><div><h2>Площадка в Добрянке</h2><p>Собственная газовая генерация, иммерсионное охлаждение FOG Hashing, административный корпус.</p></div></div>
+ <div class="mosaic">
+  <figure class="m1 rv"><img src="img/n_hall.webp" alt="Иммерсионный зал" loading="lazy" decoding="async"><figcaption><b>01</b>Иммерсионный зал</figcaption></figure>
+  <figure class="m2 rv"><img src="img/n_macro.webp" alt="ASIC в диэлектрической жидкости" loading="lazy" decoding="async"><figcaption><b>02</b>ASIC в диэлектрической жидкости</figcaption></figure>
+  <figure class="m3 rv"><img src="img/n_gpu.webp" alt="Газопоршневые установки" loading="lazy" decoding="async"><figcaption><b>03</b>Газопоршневая генерация</figcaption></figure>
+  <figure class="m4 rv"><img src="img/n_cool.webp" alt="Сухие градирни" loading="lazy" decoding="async"><figcaption><b>04</b>Сухие градирни</figcaption></figure>
+  <figure class="m5 rv"><img src="img/n_office.webp" alt="Офисный комплекс" loading="lazy" decoding="async"><figcaption><b>05</b>Административный корпус</figcaption></figure>
+ </div>
+ <div class="spec">
+  <div class="rv"><span class="lab">Стартовый парк</span><h3>Antminer Z15 Pro</h3><dl><dt>Монета</dt><dd>Zcash</dd><dt>Хэшрейт</dt><dd>840 kSol/s</dd><dt>Мощность</dt><dd>2 560 Вт</dd><dt>Цена</dt><dd>$9 345</dd></dl></div>
+  <div class="rv"><span class="lab">Расширение</span><h3>Antminer X9</h3><dl><dt>Монета</dt><dd>Monero</dd><dt>Хэшрейт</dt><dd>1 MH/s</dd><dt>Мощность</dt><dd>2 472 Вт</dd><dt>Цена</dt><dd>$7 288</dd></dl></div>
+  <div class="rv"><span class="lab">Генерация</span><h3>ГПУ на газе</h3><dl><dt>Топливо</dt><dd>природный газ</dd><dt>Установки</dt><dd>газопоршневые</dd><dt>Охлаждение</dt><dd>сухие градирни</dd><dt>Режим</dt><dd>24/7</dd></dl></div>
+ </div>
+</div></section>
+
+<section id="contact" class="cta-s"><div class="w">
+ <span class="lab rv">Следующий шаг</span>
+ <h2 class="rv">Получите инвестиционный меморандум<br>и полную финансовую модель</h2>
+ <div class="cta-a rv"><a class="btn p" href="mailto:Zommer1282@gmail.com?subject=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%9F%D0%B5%D1%80%D0%BC%D1%8C%20%E2%80%94%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2">Запросить материалы</a><a class="btn" href="Пермь.xlsx" download>Скачать модель .xlsx</a></div>
+ <p class="note rv">Материалы носят информационный характер и не являются публичной офертой. Расчёты основаны на данных WhatToMine на 20.11.2026 и не гарантируют доходность.</p>
+</div></section>
+<footer><div class="w"><a class="brand" href="#top"><img src="img/mark.svg" alt="">ЭНЕРДЖИ ТЕХНОЛОДЖИ ГРУПП</a><span class="mono">Модель «Пермь» · WhatToMine 20.11.2026</span></div></footer>
+
+<script>
+const D={z_rev:28.40,z_kw:2.56,z_price:9345,x_rev:30.47,x_kw:2.472,x_price:7288,el:0.045,pool:0.02,decay:0,start:581,x_from:23,halving:24,r1:0.5,r2:0.2,i1:0.4,i2:0.4};
+const fmt=n=>Math.round(n).toLocaleString("ru-RU");
+const fM=n=>"$"+(n/1e6).toLocaleString("ru-RU",{minimumFractionDigits:1,maximumFractionDigits:1})+"M";
+const G=[["Парк",[["start","Стартовый парк Z15 Pro",100,2000,1,v=>fmt(v)+" шт."],["x_from","Закупка X9 с месяца",1,61,1,v=>v>60?"нет":v],["halving","Халвинг ZEC с месяца",1,61,1,v=>v>60?"нет":v]]],
+["Доходность",[["z_rev","Z15 Pro, $/сутки",5,60,.1,v=>"$"+v.toFixed(2)],["x_rev","X9, $/сутки",5,60,.1,v=>"$"+v.toFixed(2)],["el","Электроэнергия, $/кВт·ч",0,.12,.001,v=>"$"+v.toFixed(3)],["pool","Комиссия пула",0,.05,.005,v=>(v*100).toFixed(1)+"%"],["decay","Падение доходности, %/мес",0,.05,.0025,v=>(v*100).toFixed(2)+"%"]]],
+["Цены ASIC",[["z_price","Z15 Pro",3000,15000,5,v=>"$"+fmt(v)],["x_price","X9",3000,15000,5,v=>"$"+fmt(v)]]],
+["Распределение",[["r1","Реинвест до окупаемости",0,.9,.05,v=>Math.round(v*100)+"%"],["r2","Реинвест после окупаемости",0,.9,.05,v=>Math.round(v*100)+"%"]]]];
+let P={...D};let _raf=0;const sched=()=>{if(_raf)return;_raf=requestAnimationFrame(()=>{_raf=0;upd()})};
+function model(p){const d=30,el=24*d*p.el,dec=p.decay||0,inv=p.start*p.z_price;let B=p.start,C=0,rem=0,cum=0,pb=null,R=[];
+ for(let m=1;m<=60;m++){const f=Math.pow(1-dec,m-1),zr=p.z_rev*f*(m>=p.halving?.5:1),xr=p.x_rev*f;
+  const zu=Math.max(0,zr*d*(1-p.pool)-p.z_kw*el),xu=Math.max(0,xr*d*(1-p.pool)-p.x_kw*el);
+  const zi=B*zu,xi=C*xu,F=zi+xi,be=cum<inv;
+  const r=be?p.r1:p.r2,ip=be?p.i1:p.i2,M=F*r,I=F*ip,K=F-M-I;cum+=I;if(pb===null&&cum>=inv)pb=m;
+  const bud=M+rem,q=m<p.x_from?Math.floor(bud/p.z_price):0,x=m>=p.x_from?Math.floor(bud/p.x_price):0;rem=bud-q*p.z_price-x*p.x_price;
+  R.push({m,B,C,zi,xi,F,r,M,I,K,cum,q,x});B+=q;C+=x}
+ const T=k=>R.reduce((s,o)=>s+o[k],0);return{R,pb,inv,F:T("F"),M:T("M"),I:T("I"),K:T("K"),B,C}}
+const box=document.getElementById("sliders");
+G.forEach(([g,list])=>{let h=`<div class="grp"><span class="lab">${g}</span>`;list.forEach(([k,l,a,b,s])=>h+=`<div class="sl"><div class="r"><span>${l}</span><b id="v_${k}"></b></div><input type=range id="s_${k}" min=${a} max=${b} step=${s}></div>`);box.insertAdjacentHTML("beforeend",h+"</div>")});
+const ALL=G.flatMap(g=>g[1]);
+ALL.forEach(([k])=>{const e=document.getElementById("s_"+k);e.value=P[k];e.oninput=()=>{P[k]=+e.value;sched()}});
+document.getElementById("reset").onclick=()=>{P={...D};ALL.forEach(([k])=>document.getElementById("s_"+k).value=P[k]);upd()};
+const css=getComputedStyle(document.documentElement),c=v=>css.getPropertyValue(v).trim();
+Chart.defaults.color=c("--mu");Chart.defaults.borderColor=c("--ln");Chart.defaults.font.family="JetBrains Mono";Chart.defaults.font.size=11;
+Chart.defaults.plugins.legend.display=false;
+Object.assign(Chart.defaults.plugins.tooltip,{backgroundColor:"#0b0c0e",borderColor:c("--ln2"),borderWidth:1,cornerRadius:0,padding:10,boxWidth:8,boxHeight:8});
+const CU=c("--cu"),CU2=c("--cu2"),GR=c("--gr"),NV=c("--nv");
+const lab=Array.from({length:60},(_,i)=>i+1);
+const ax={grid:{display:false},border:{color:c("--ln2")},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:12}};
+const ay=f=>({grid:{color:c("--ln")},border:{display:false},ticks:{callback:f,maxTicksLimit:6}});
+const tip={callbacks:{title:x=>"Месяц "+x[0].label,label:x=>" "+x.dataset.label+"  $"+fmt(x.raw)}};
+const MK={pb:null,hv:24};
+const markers={id:"markers",afterDatasetsDraw(ch,a,o){if(!o||!o.on)return;const {ctx,chartArea:ca,scales:{x}}=ch;
+ [[MK.pb,"ОКУПАЕМОСТЬ",GR],[MK.hv,"ХАЛВИНГ ZEC",CU2]].forEach(([m,t,col],i)=>{const yo=ca.top+i*24;if(!m||m>60)return;const px=x.getPixelForValue(m-1);
+  ctx.save();ctx.strokeStyle=col;ctx.setLineDash([3,4]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(px,ca.top);ctx.lineTo(px,ca.bottom);ctx.stroke();
+  ctx.setLineDash([]);ctx.font="500 10px JetBrains Mono";const w=ctx.measureText(t+" · "+m).width+12;
+  ctx.fillStyle="#0b0c0e";ctx.fillRect(px+4,yo,w,18);ctx.strokeRect(px+4,yo,w,18);ctx.fillStyle=col;ctx.fillText(t+" · "+m,px+10,yo+12.5);ctx.restore()})}};
+const cross={id:"cross",afterDraw(ch){const a=ch.tooltip&&ch.tooltip.getActiveElements();if(!a||!a.length||ch.config.options.indexAxis==="y")return;
+ const {ctx,chartArea:ca}=ch,x=a[0].element.x;ctx.save();ctx.strokeStyle="rgba(236,234,230,.25)";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,ca.top);ctx.lineTo(x,ca.bottom);ctx.stroke();ctx.restore()}};
+Chart.register(markers,cross);
+const grad=(col,a1,a2)=>c2=>{const {ctx,chartArea:ca}=c2.chart;if(!ca)return col;const g=ctx.createLinearGradient(0,ca.top,0,ca.bottom);g.addColorStop(0,col.replace("A",a1));g.addColorStop(1,col.replace("A",a2));return g};
+const mk=(id,cfg)=>new Chart(document.getElementById(id),cfg);
+const cMain=mk("cMain",{type:"bar",data:{labels:lab,datasets:[{label:"Реинвест",backgroundColor:grad("rgba(200,119,74,A)",1,.7)},{label:"Инвестор",backgroundColor:grad("rgba(236,211,180,A)",1,.55)},{label:"Компания",backgroundColor:grad("rgba(138,128,118,A)",.95,.6)}].map(d=>({...d,data:[],stack:"a",barPercentage:.72,categoryPercentage:1,borderRadius:{topLeft:1,topRight:1}}))},
+ options:{maintainAspectRatio:false,animation:{duration:300},interaction:{mode:"index",intersect:false},plugins:{tooltip:tip,markers:{on:true}},scales:{x:{...ax,stacked:true},y:{...ay(v=>"$"+v/1e3+"k"),stacked:true}}}});
+const cFleet=mk("cFleet",{type:"line",data:{labels:lab,datasets:[{label:"Z15 Pro",borderColor:CU2,backgroundColor:grad("rgba(226,162,122,A)",.35,.02)},{label:"X9",borderColor:GR,backgroundColor:grad("rgba(236,211,180,A)",.45,.04)}].map(d=>({...d,data:[],fill:true,pointRadius:0,borderWidth:1.5,stack:"f"}))},
+ options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{markers:{on:true},tooltip:{callbacks:{title:tip.callbacks.title,label:x=>" "+x.dataset.label+"  "+fmt(x.raw)+" шт."}}},scales:{x:ax,y:{...ay(v=>fmt(v)),stacked:true}}}});
+const cCum=mk("cCum",{type:"line",data:{labels:lab,datasets:[{label:"Выплачено",data:[],borderColor:GR,backgroundColor:grad("rgba(236,211,180,A)",.4,0),fill:true,pointRadius:0,borderWidth:2,tension:.3},{label:"Вложения",data:[],borderColor:CU2,borderDash:[4,4],pointRadius:0,borderWidth:1}]},
+ options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{tooltip:tip,markers:{on:true}},scales:{x:ax,y:ay(v=>"$"+v/1e6+"M")}}});
+const cYear=mk("cYear",{type:"bar",data:{labels:["Год 1","Год 2","Год 3","Год 4","Год 5"],datasets:[{label:"Z15 Pro",data:[],backgroundColor:grad("rgba(226,162,122,A)",1,.5)},{label:"X9",data:[],backgroundColor:grad("rgba(236,211,180,A)",1,.5)}].map(d=>({...d,barPercentage:.42}))},
+ options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{tooltip:{callbacks:{label:tip.callbacks.label}}},scales:{x:{...ax,stacked:true},y:{...ay(v=>"$"+v/1e6+"M"),stacked:true}}}});
+const cPie=mk("cPie",{type:"bar",data:{labels:["Реинвест","Инвестор","Компания"],datasets:[{label:"За 60 мес.",data:[],backgroundColor:[CU,GR,NV],barPercentage:.6}]},
+ options:{indexAxis:"y",maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:x=>" "+fM(x.raw)}}},scales:{x:ay(v=>"$"+v/1e6+"M"),y:{grid:{display:false},border:{color:c("--ln2")},ticks:{font:{family:"Inter Tight",size:13},color:c("--tx")}}}}});
+let last;
+const H=["Мес.","Z15 Pro","X9","Доход Z15","Доход X9","Чистый доход","Реинв. %","Реинвест","Инвестор","Компания","Инвестору нараст.","+Z15","+X9"];
+const rows=o=>o.R.map(r=>[r.m,r.B,r.C,r.zi,r.xi,r.F,Math.round(r.r*100)+"%",r.M,r.I,r.K,r.cum,r.q,r.x]);
+function upd(){ALL.forEach(([k,,,,,f])=>document.getElementById("v_"+k).textContent=f(P[k]));
+ const o=model(P);last=o;MK.pb=o.pb;MK.hv=P.halving;if(window.extra){clearTimeout(window._hx);window._hx=setTimeout(extra,180)}if(window.mine)setTimeout(mine,0);const s=(i,v)=>document.getElementById(i).textContent=v;
+ s("r1",o.pb??"> 60");s("r2",fM(o.I));s("r3",fM(o.K));s("r4",fM(o.M));s("r5",fM(o.F));s("r6",fmt(o.B)+" / "+fmt(o.C));
+ [o.R.map(r=>r.M),o.R.map(r=>r.I),o.R.map(r=>r.K)].forEach((d,i)=>cMain.data.datasets[i].data=d);cMain.update("none");
+ cFleet.data.datasets[0].data=o.R.map(r=>r.B);cFleet.data.datasets[1].data=o.R.map(r=>r.C);cFleet.update("none");
+ cCum.data.datasets[0].data=o.R.map(r=>r.cum);cCum.data.datasets[1].data=o.R.map(()=>o.inv);cCum.update("none");
+ const y=k=>[0,1,2,3,4].map(i=>o.R.slice(i*12,i*12+12).reduce((t,r)=>t+r[k],0));
+ cYear.data.datasets[0].data=y("zi");cYear.data.datasets[1].data=y("xi");cYear.update("none");
+ cPie.data.datasets[0].data=[o.M,o.I,o.K];cPie.update("none");
+ const tb=document.getElementById("tb"),sum=k=>fmt(o.R.reduce((t,r)=>t+r[k],0));
+ tb.innerHTML="<thead><tr>"+H.map(h=>`<th>${h}</th>`).join("")+"</tr></thead><tbody>"+rows(o).map((a,i)=>`<tr class="${i+1===o.pb?"pb":i+1===P.halving?"hv":""}">`+a.map((v,j)=>`<td>${j===0?String(v).padStart(2,"0"):typeof v==="number"?fmt(v):v}</td>`).join("")+"</tr>").join("")+
+ `</tbody><tfoot><tr><th>Итого</th><th></th><th></th><th>${sum("zi")}</th><th>${sum("xi")}</th><th>${fmt(o.F)}</th><th></th><th>${fmt(o.M)}</th><th>${fmt(o.I)}</th><th>${fmt(o.K)}</th><th></th><th></th><th></th></tr></tfoot>`}
+document.getElementById("xls").onclick=async()=>{if(!window.XLSX)await new Promise((ok,er)=>{const s=document.createElement("script");s.src="vendor/xlsx.full.min.js";s.onload=ok;s.onerror=er;document.head.appendChild(s)});const ws=XLSX.utils.aoa_to_sheet([H,...rows(last).map(r=>r.map(v=>typeof v==="number"?Math.round(v):v))]);const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Пермь");XLSX.writeFile(wb,"Пермь_расчёт.xlsx")};
+upd();
+const b=model(D);
+const roll=(id,to,f)=>{const e=document.getElementById(id),t0=performance.now();const st=t=>{const k=Math.min(1,(t-t0)/1400),v=to*(1-Math.pow(1-k,3));e.innerHTML=f(v);if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)};
+roll("k1",b.pb,v=>Math.round(v)+"<small>мес.</small>");
+roll("k2",b.I,v=>"$"+(v/1e6).toFixed(1).replace(".",",")+"<small>млн</small>");
+roll("k3",b.F,v=>"$"+(v/1e6).toFixed(1).replace(".",",")+"<small>млн</small>");
+roll("k4",b.B+b.C,v=>fmt(v)+"<small>ASIC</small>");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".rv").forEach((e,i)=>{e.style.transitionDelay=(i%4)*70+"ms";io.observe(e)});
+const PX=[...document.querySelectorAll("[data-px]")];
+const onS=()=>{document.getElementById("hd").classList.toggle("s",scrollY>20);PX.forEach(i=>{const r=i.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;i.style.transform=`translateY(${(r.top/innerHeight-.5)*-12}%)`})};
+let _st=0;addEventListener("scroll",()=>{if(_st)return;_st=requestAnimationFrame(()=>{_st=0;onS()})},{passive:true});onS();
+// ===== personal calc
+const fmtUSD=n=>n>=1e6?"$"+(n/1e6).toLocaleString("ru-RU",{maximumFractionDigits:2})+"M":"$"+fmt(n);
+function mine(){const o=last,inp=document.getElementById("myinv");if(!o||!inp)return;const a=Math.max(0,+inp.value||0),sh=a/o.inv;
+ document.getElementById("m1").textContent=(sh*100).toLocaleString("ru-RU",{maximumFractionDigits:2})+"%";
+ document.getElementById("m1s").textContent="от стартового парка "+fmtUSD(o.inv);
+ document.getElementById("m2").textContent=fmtUSD(o.I*sh);
+ document.getElementById("m2s").textContent=o.pb?"окупаемость на "+o.pb+"-м месяце":"окупаемости нет за 60 мес.";
+ document.getElementById("m3").textContent="×"+(a?(o.I*sh/a).toFixed(2).replace(".",","):"0");
+ const after=o.pb?o.R.slice(o.pb):[];document.getElementById("m4").textContent=after.length?fmtUSD(after.reduce((s,r)=>s+r.I,0)/after.length*sh):"—"}
+window.mine=mine;
+document.getElementById("myinv").addEventListener("input",mine);
+document.querySelectorAll(".mine .ch2 button").forEach(x=>x.onclick=()=>{document.getElementById("myinv").value=x.dataset.v;mine()});
+mine();
+// ===== marquee
+(()=>{const it=[["ZEC","Z15 Pro · 840 kSol/s"],["XMR","X9 · 1 MH/s"],["Окупаемость",b.pb+" мес."],["Инвестору","$"+(b.I/1e6).toFixed(1)+"M"],["Пул","2%"],["Электроэнергия","$0,045/кВт·ч"],["Халвинг ZEC","24 мес."],["Парк на 60 мес.",fmt(b.B+b.C)+" ASIC"]];
+ const h=it.map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join("");document.getElementById("mqt").innerHTML=h+h})();
+// ===== timeline
+(()=>{const R=b.R,r=m=>R[m-1];
+ const M=[[1,"Старт","Запуск стартового парка. Половина дохода уходит на покупку новых Z15 Pro.",[["Парк",fmt(r(1).B)+" Z15 Pro"],["Доход в месяц","$"+fmt(r(1).F)],["Реинвест","50%"]]],
+ [b.pb,"Окупаемость","Инвестору выплачена сумма вложений. Реинвест снижается до 20%, выплаты растут.",[["Выплачено инвестору","$"+fmt(r(b.pb).cum)],["Парк",fmt(r(b.pb).B)+" Z15 Pro"],["Распределение","20 / 40 / 40"]]],
+ [23,"Переход на X9","Реинвест идёт в Antminer X9 на Monero. Z15 Pro продолжают майнить.",[["Z15 Pro",fmt(r(23).B)],["Первая закупка X9",fmt(r(23).x)+" шт."],["Доход в месяц","$"+fmt(r(23).F)]]],
+ [24,"Халвинг ZEC","Награда за блок Zcash падает вдвое. Доход Z15 Pro — $335 вместо $752 в месяц.",[["Доход в месяц","$"+fmt(r(24).F)],["X9 в работе",fmt(r(24).C)],["У Monero","халвинга нет"]]],
+ [60,"Итог","Пять лет работы фермы с реинвестированием.",[["Парк",fmt(b.B)+" Z15 + "+fmt(b.C)+" X9"],["Инвестору всего","$"+fmt(b.I)],["Чистый доход","$"+fmt(b.F)]]]];
+ document.getElementById("track").innerHTML=M.map(([m,h,p,d])=>`<div class="ms"><div class="mn">${String(m).padStart(2,"0")}</div><div class="mm">месяц ${m}</div><h3>${h}</h3><p>${p}</p><dl>${d.map(([a,v])=>`<dt>${a}</dt><dd>${v}</dd>`).join("")}</dl></div>`).join("")})();
+// ===== motion
+const pre=document.getElementById("pre"),preb=document.getElementById("preb");preb.style.width="60%";
+let lenis=null,started=false;
+function start(){if(started)return;started=true;document.getElementById("h1").classList.add("go");setTimeout(()=>document.getElementById("h1").classList.add("done"),2600);preb.style.width="100%";setTimeout(()=>pre.classList.add("off"),350);setTimeout(()=>pre.remove(),1200);
+ if(!window.gsap)return;
+ 
+ if(!window.ScrollTrigger)return;gsap.registerPlugin(ScrollTrigger);
+ if(window.Lenis&&matchMedia("(pointer:fine)").matches){lenis=new Lenis({duration:1.15,smoothWheel:true});window.lenis=lenis;lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}
+ gsap.matchMedia().add("(min-width:801px)",()=>{const tr=document.getElementById("track"),cards=[...tr.children];
+  const dist=()=>Math.max(0,tr.scrollWidth-innerWidth+80);
+  gsap.to(tr,{x:()=>-dist(),ease:"none",scrollTrigger:{trigger:"#story",start:"top top",end:()=>"+="+dist(),pin:true,scrub:.6,invalidateOnRefresh:true,
+   onUpdate:s=>{document.getElementById("stp").style.width=s.progress*100+"%";const k=Math.min(cards.length-1,Math.floor(s.progress*cards.length));cards.forEach((c,i)=>c.classList.toggle("on",i<=k))}}})});
+}
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(start,200));setTimeout(start,1200);
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{const id=a.getAttribute("href");if(id.length<2)return;const el=document.querySelector(id);if(!el)return;e.preventDefault();lenis?lenis.scrollTo(el,{offset:-64}):el.scrollIntoView({behavior:"smooth"})}));
+// ===== cursor
+(()=>{const c=document.getElementById("cur");if(!matchMedia("(pointer:fine)").matches)return;let x=0,y=0,cx=0,cy=0;
+ addEventListener("mousemove",e=>{x=e.clientX;y=e.clientY;c.style.opacity=1});
+ (function f(){cx+=(x-cx)*.18;cy+=(y-cy)*.18;c.style.transform=`translate(${cx-14}px,${cy-14}px)`;requestAnimationFrame(f)})();
+ document.querySelectorAll("a,button,input,.mosaic figure").forEach(el=>{el.addEventListener("mouseenter",()=>c.classList.add("big"));el.addEventListener("mouseleave",()=>c.classList.remove("big"))})})();
+
+// ===== scenarios
+const SC={base:{z_rev:D.z_rev,x_rev:D.x_rev,decay:0},cons:{z_rev:D.z_rev,x_rev:D.x_rev,decay:.02},stress:{z_rev:+(D.z_rev*.7).toFixed(1),x_rev:+(D.x_rev*.7).toFixed(1),decay:.03}};
+document.querySelectorAll("#scn button").forEach(bt=>bt.onclick=()=>{document.querySelectorAll("#scn button").forEach(x=>x.classList.toggle("on",x===bt));
+ Object.assign(P,SC[bt.dataset.s]);ALL.forEach(([k])=>document.getElementById("s_"+k).value=P[k]);upd()});
+document.getElementById("reset").addEventListener("click",()=>document.querySelectorAll("#scn button").forEach((x,i)=>x.classList.toggle("on",i===0)));
+// ===== unit economics (static, base data)
+(()=>{const d=30,u=(name,sub,rev,kw,price)=>{const g=rev*d,pl=g*D.pool,e=kw*24*d*D.el,n=g-pl-e;
+ const row=(a,v,c="")=>`<div class="ue-r ${c}"><span>${a}</span><b>${v}</b></div>`;
+ return `<div class="ue-c"><h4>${name}<small>${sub}</small></h4>${row("Выручка WhatToMine","$"+fmt(g))}${row("Комиссия пула 2%","−$"+fmt(pl),"neg")}${row("Электроэнергия "+(kw*24*d).toFixed(0)+" кВт·ч","−$"+fmt(e),"neg")}${row("Чистый доход","$"+fmt(n),"tot")}${row("Окупаемость одного ASIC",(price/n).toFixed(1).replace(".",",")+" мес.")}<div class="ue-bar"><i style="width:${(n/g*100).toFixed(1)}%"></i></div><div class="ue-r"><span>Маржа после ЭЭ и пула</span><b>${Math.round(n/g*100)}%</b></div></div>`};
+ document.getElementById("ue").innerHTML=u("Antminer Z15 Pro","Zcash · до халвинга",D.z_rev,D.z_kw,D.z_price)+u("Antminer X9","Monero",D.x_rev,D.x_kw,D.x_price)})();
+// ===== heatmap + terms
+const MUL=[.6,.7,.8,.9,1,1.1,1.2,1.3],ELS=[.03,.035,.04,.045,.05,.055,.06,.07];
+const hcol=pb=>!pb?"#1c1714":pb<=24?"#e2b48c":pb<=36?"#a8633d":"#5e3826";
+function extra(){const o=last;
+ let h="<thead><tr><th></th>"+MUL.map(m=>`<th>${Math.round(m*100)}%</th>`).join("")+"</tr></thead><tbody>";
+ ELS.forEach(e=>{h+=`<tr><th>$${e.toFixed(3)}</th>`;MUL.forEach(m=>{const r=model({...P,el:e,z_rev:P.z_rev*m,x_rev:P.x_rev*m});
+  const me=Math.abs(e-P.el)<.0026&&Math.abs(m-1)<.01;
+  h+=`<td class="${me?"me":""}" style="background:${hcol(r.pb)};color:${r.pb&&r.pb<=24?"#1a120c":"#f3e6d8"}" title="Инвестору за 60 мес.: ${fM(r.I)}">${r.pb?r.pb:"—"}<small>×${(r.I/r.inv).toFixed(1)}</small></td>`});h+="</tr>"});
+ document.getElementById("hm").innerHTML=h+"</tbody>";
+ document.getElementById("t_inv").textContent="$"+fmt(b.inv);
+ document.getElementById("t_pb").textContent=b.pb+"-й месяц";
+ document.getElementById("t_i").textContent="$"+fmt(b.I)+" (×"+(b.I/b.inv).toFixed(2).replace(".",",")+")"}
+window.extra=extra;extra();
+
+
+// pause off-screen CSS animations
+(()=>{const io2=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("paused",!e.isIntersecting)));document.querySelectorAll(".hero,.mq").forEach(el=>io2.observe(el))})();
+</script>
+</body>
+</html>
