@@ -255,8 +255,8 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
 <div id="pre"><img src="img/mark.svg" alt=""><div class="bar"><i id="preb"></i></div><span class="lab">Энерджи Технолоджи Групп</span></div><div id="cur"></div>
 <header id="hd"><div class="w nav">
  <a class="brand" href="#top"><img src="img/mark.svg" alt="">ЭНЕРДЖИ ТЕХНОЛОДЖИ ГРУПП</a>
- <nav><a href="#model"><b>01</b>Модель</a><a href="#calc"><b>02</b>Калькулятор</a><a href="#charts"><b>03</b>Динамика</a><a href="#sens"><b>04</b>Сценарии</a><a href="#terms"><b>06</b>Условия</a><a href="#risks"><b>07</b>Риски</a><a href="#project"><b>08</b>Объект</a></nav>
- <a class="btn" href="#calc">Рассчитать</a>
+ <nav><a href="#model"><b>01</b>Модель</a><a href="#calc"><b>02</b>Результат</a><a href="#charts"><b>03</b>Динамика</a><a href="#table"><b>04</b>Таблица</a><a href="#terms"><b>06</b>Условия</a><a href="#risks"><b>07</b>Риски</a><a href="#project"><b>08</b>Объект</a></nav>
+ <a class="btn" href="#calc">Мой доход</a>
 </div></header>
 
 <section class="hero" id="top">
@@ -265,30 +265,26 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
   <span class="lab rv">Пермский край · Добрянка · 58.4612° N 56.4127° E</span>
   <h1 id="h1"><span class="ln"><span>Проект</span></span><span class="ln"><span><em>Пермь</em></span></span></h1>
   <div class="sub">
-   <p class="rv">Иммерсионная майнинг-ферма с реинвестированием. Старт — 581 Antminer Z15 Pro, после 22-го месяца рост за счёт Antminer X9. Горизонт расчёта — 60 месяцев.</p>
-   <div class="act rv"><a class="btn p" href="#calc">Открыть калькулятор</a><a class="btn" href="#table">Таблица</a></div>
+   <p class="rv">Иммерсионная майнинг-ферма с реинвестированием. Старт — 581 Antminer Z15 Pro, с 30-го месяца рост за счёт Antminer X9. Горизонт расчёта — 60 месяцев.</p>
+   <div class="act rv"><a class="btn p" href="#calc">Посчитать мой доход</a><a class="btn" href="#table">Таблица</a></div>
   </div>
  </div>
  <div class="w"><div class="strip">
   <div class="rv"><span class="lab">Окупаемость</span><div class="v" id="k1">—</div></div>
   <div class="rv"><span class="lab">Инвестору за 60 мес.</span><div class="v" id="k2">—</div></div>
-  <div class="rv"><span class="lab">Чистый доход</span><div class="v" id="k3">—</div></div>
+  <div class="rv"><span class="lab">Общий доход</span><div class="v" id="k3">—</div></div>
   <div class="rv"><span class="lab">Парк на 60-й мес.</span><div class="v" id="k4">—</div></div>
  </div></div>
 </section>
 
 <div class="mq" aria-hidden="true"><div class="tr" id="mqt"></div></div>
 <section id="model"><div class="w sec" data-n="01">
- <div class="head rv"><span class="lab">01 — Модель</span><div><h2>Четыре правила расчёта</h2><p>Логика полностью повторяет таблицу «Пермь». Доходность ASIC — WhatToMine на 20.11.2026.</p></div></div>
+ <div class="head rv"><span class="lab">01 — Модель</span><div><h2>Четыре правила расчёта</h2><p>Все цифры на сайте взяты из расчётной таблицы проекта «Пермь» без изменений.</p></div></div>
  <div class="rules">
-  <div class="rv"><span class="n">01</span><h3>Доход</h3><p>Выручка WhatToMine минус комиссия пула и электроэнергия. Других вычетов нет.</p><div class="big">−2% пул · $0,045/кВт·ч</div></div>
-  <div class="rv"><span class="n">02</span><h3>Распределение</h3><p>Реинвест / инвестор / компания. Переключение — в месяц окупаемости.</p><div class="big">50/40/10 → 20/40/40</div></div>
-  <div class="rv"><span class="n">03</span><h3>Рост парка</h3><p>Реинвест покупает целые ASIC, остаток переносится. Старый парк не списывается.</p><div class="big">Z15 Pro → X9 с 23 мес.</div></div>
-  <div class="rv"><span class="n">04</span><h3>Халвинг</h3><p>Награда ZEC падает вдвое. Z15 Pro продолжают майнить, у Monero халвинга нет.</p><div class="big">с 24 мес. · Z15 Pro ×0,5</div></div>
- </div>
- <div class="ue rv">
-  <div class="ue-h"><span class="lab">Экономика одного ASIC в месяц</span><span class="lab">WhatToMine · 20.11.2026</span></div>
-  <div class="ue-g" id="ue"></div>
+  <div class="rv"><span class="n">01</span><h3>Старт</h3><p>Стартовый парк Antminer Z15 Pro на Zcash. Электричество и комиссия пула учтены до распределения.</p><div class="big">581 Z15 Pro</div></div>
+  <div class="rv"><span class="n">02</span><h3>Распределение</h3><p>Реинвест / инвестор / компания. Переключение — после окупаемости проекта.</p><div class="big">50/40/10 → 20/40/40</div></div>
+  <div class="rv"><span class="n">03</span><h3>Рост парка</h3><p>Реинвест каждый месяц покупает новые ASIC — парк растёт без новых вложений.</p><div class="big">581 → 2 093 Z15 Pro</div></div>
+  <div class="rv"><span class="n">04</span><h3>Халвинг и X9</h3><p>С 30-го месяца награда ZEC падает вдвое, Z15 Pro продолжают майнить, реинвест идёт в Antminer X9.</p><div class="big">X9: 131 → 1 365 шт.</div></div>
  </div>
 </div></section>
 
@@ -297,17 +293,15 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
  <div class="track" id="track"></div>
 </div></section>
 <section id="calc"><div class="w sec" data-n="02">
- <div class="head rv"><span class="lab">02 — Калькулятор</span><div><h2>Сценарий в реальном времени</h2><p>Двигайте параметры — 60 месяцев пересчитываются мгновенно.</p></div></div>
+ <div class="head rv"><span class="lab">02 — Результат</span><div><h2>Результат за 60 месяцев</h2><p>Итоги расчётной таблицы и ваша доля в выплатах инвестору.</p></div></div>
  <div class="calc rv">
-  <div class="ctl"><div class="t"><span class="lab">Допущения</span><div class="scn" id="scn"><button data-s="base" class="on">Базовый</button><button data-s="cons">Консервативный</button><button data-s="stress">Стресс</button></div><button id="reset">Сбросить</button></div>
-   <div id="sliders"></div></div>
   <div class="out">
    <div class="res">
     <div><span class="lab">Окупаемость, мес.</span><div class="v hl" id="r1">—</div></div>
     <div><span class="lab">Инвестору</span><div class="v" id="r2">—</div></div>
     <div><span class="lab">Компании</span><div class="v" id="r3">—</div></div>
     <div><span class="lab">Реинвест</span><div class="v" id="r4">—</div></div>
-    <div><span class="lab">Чистый доход</span><div class="v" id="r5">—</div></div>
+    <div><span class="lab">Общий доход</span><div class="v" id="r5">—</div></div>
     <div><span class="lab">Z15 Pro / X9</span><div class="v" id="r6">—</div></div>
    </div>
    <div class="cb"><div class="leg"><span><i style="background:var(--cu)"></i>Реинвест</span><span><i style="background:var(--gr)"></i>Инвестор</span><span><i style="background:var(--nv)"></i>Компания</span></div><div class="ch"><canvas id="cMain"></canvas></div></div>
@@ -328,28 +322,22 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
 <section id="charts"><div class="w sec" data-n="03">
  <div class="head rv"><span class="lab">03 — Динамика</span><div><h2>Как растёт проект</h2></div></div>
  <div class="cg">
-  <div class="rv"><span class="lab">Парк</span><h3>ASIC в работе</h3><p>Z15 Pro растут до 22-го месяца, далее докупаются X9.</p><div class="box"><canvas id="cFleet"></canvas></div></div>
-  <div class="rv"><span class="lab">Инвестор</span><h3>Выплаты нарастающим итогом</h3><p>Пунктир — стоимость стартового парка.</p><div class="box"><canvas id="cCum"></canvas></div></div>
-  <div class="rv"><span class="lab">Доход</span><h3>Чистый доход по годам</h3><p>Вклад Z15 Pro и X9.</p><div class="box"><canvas id="cYear"></canvas></div></div>
+  <div class="rv"><span class="lab">Парк</span><h3>ASIC в работе</h3><p>Z15 Pro растут до 30-го месяца, далее докупаются X9.</p><div class="box"><canvas id="cFleet"></canvas></div></div>
+  <div class="rv"><span class="lab">Инвестор</span><h3>Выплаты нарастающим итогом</h3><p>Пунктир — стоимость стартового парка (581 × $9 345).</p><div class="box"><canvas id="cCum"></canvas></div></div>
+  <div class="rv"><span class="lab">Доход</span><h3>Общий доход по годам</h3><p>Вклад Z15 Pro и X9.</p><div class="box"><canvas id="cYear"></canvas></div></div>
   <div class="rv"><span class="lab">Итог</span><h3>Распределение за 60 месяцев</h3><p>Реинвест, инвестор и компания.</p><div class="box"><canvas id="cPie"></canvas></div></div>
  </div>
 </div></section>
 
-<section id="sens"><div class="w sec" data-n="04">
- <div class="head rv"><span class="lab">04 — Чувствительность</span><div><h2>Что будет, если рынок изменится</h2><p>Месяц окупаемости при разной доходности ASIC и цене электроэнергии. Остальные параметры — как в калькуляторе.</p></div></div>
- <div class="hm rv"><div class="hm-y lab">Электроэнергия, $/кВт·ч</div><div class="hm-w"><table id="hm"></table></div><div class="hm-x lab">Доходность ASIC относительно WhatToMine</div></div>
- <div class="hm-leg rv"><span><i style="background:#e2b48c"></i>до 24 мес.</span><span><i style="background:#a8633d"></i>25–36 мес.</span><span><i style="background:#5e3826"></i>37–60 мес.</span><span><i style="background:#1c1714;outline:1px solid #2f343c"></i>не окупается за 60 мес.</span><span class="cur">рамка — текущий сценарий</span></div>
-</div></section>
-
 <section id="table"><div class="w sec" data-n="05">
- <div class="head rv"><span class="lab">05 — Таблица</span><div><h2>60 месяцев помесячно</h2></div></div>
- <div class="tbar rv"><div class="leg"><span><i style="background:var(--gr)"></i>Окупаемость</span><span><i style="background:var(--cu)"></i>Халвинг ZEC</span></div><button class="btn p" id="xls">Скачать Excel</button></div>
+ <div class="head rv"><span class="lab">04 — Таблица</span><div><h2>60 месяцев помесячно</h2></div></div>
+ <div class="tbar rv"><div class="leg"><span><i style="background:var(--gr)"></i>Окупаемость</span><span><i style="background:var(--cu)"></i>Халвинг ZEC и переход на X9</span></div><button class="btn p" id="xls">Скачать Excel</button></div>
  <div class="tw rv"><table id="tb"></table></div>
- <p class="note">Суммы в долларах США. Доходность ASIC зафиксирована на 20.11.2026; рост сложности сети и изменение курсов не моделируются. Расчёт не является гарантией доходности.</p>
+ <p class="note">Суммы в долларах США. Данные — расчётная таблица проекта «Пермь» без изменений. Месяц 30 приведён двумя строками: Z15 Pro после халвинга и X9. Расчёт не является гарантией доходности.</p>
 </div></section>
 
-<section id="terms"><div class="w sec" data-n="06">
- <div class="head rv"><span class="lab">06 — Условия</span><div><h2>Структура участия</h2><p>Основные параметры инвестиционной модели. Финальные условия фиксируются в договоре.</p></div></div>
+<section id="terms"><div class="w sec" data-n="05">
+ <div class="head rv"><span class="lab">05 — Условия</span><div><h2>Структура участия</h2><p>Основные параметры инвестиционной модели. Финальные условия фиксируются в договоре.</p></div></div>
  <div class="ts rv">
   <dl>
    <dt>Объект вложений</dt><dd>Стартовый парк 581 Antminer Z15 Pro</dd>
@@ -357,29 +345,29 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
    <dt>Горизонт модели</dt><dd>60 месяцев</dd>
    <dt>Распределение до окупаемости</dt><dd>50% реинвест · 40% инвестор · 10% компания</dd>
    <dt>Распределение после окупаемости</dt><dd>20% реинвест · 40% инвестор · 40% компания</dd>
-   <dt>Окупаемость (базовый сценарий)</dt><dd class="mono" id="t_pb">—</dd>
+   <dt>Окупаемость проекта</dt><dd class="mono" id="t_pb">—</dd>
    <dt>Выплаты инвестору за 60 мес.</dt><dd class="mono" id="t_i">—</dd>
    <dt>Периодичность выплат</dt><dd>ежемесячно</dd>
-   <dt>Вычеты до распределения</dt><dd>электроэнергия и комиссия пула</dd>
+   <dt>Расширение парка</dt><dd>Antminer X9 с 30-го месяца</dd>
   </dl>
  </div>
 </div></section>
 
-<section id="risks"><div class="w sec" data-n="07">
- <div class="head rv"><span class="lab">07 — Риски</span><div><h2>Риски и как с ними работать</h2><p>Майнинг — рыночный бизнес. Вот что влияет на результат сильнее всего.</p></div></div>
+<section id="risks"><div class="w sec" data-n="06">
+ <div class="head rv"><span class="lab">06 — Риски</span><div><h2>Риски и как с ними работать</h2><p>Майнинг — рыночный бизнес. Вот что влияет на результат сильнее всего.</p></div></div>
  <div class="rk">
-  <div class="rv"><span class="n">R1</span><h3>Сложность сети</h3><p>Рост хэшрейта сети снижает доход каждого ASIC. В калькуляторе — параметр «Падение доходности».</p><b>Сценарий «Консервативный»: −2%/мес</b></div>
-  <div class="rv"><span class="n">R2</span><h3>Курс ZEC и XMR</h3><p>Доход в долларах напрямую зависит от курса монет. Диверсификация на две монеты снижает зависимость от одной.</p><b>Сценарий «Стресс»: −30% к доходу</b></div>
-  <div class="rv"><span class="n">R3</span><h3>Халвинг ZEC</h3><p>С 24-го месяца награда Zcash падает вдвое. Уже учтено в базовой модели, поэтому рост идёт за счёт X9.</p><b>Учтено в модели</b></div>
+  <div class="rv"><span class="n">R1</span><h3>Сложность сети</h3><p>Рост хэшрейта сети снижает доход каждого ASIC. Влияет на фактический доход относительно расчёта.</p><b>Мониторинг ежемесячно</b></div>
+  <div class="rv"><span class="n">R2</span><h3>Курс ZEC и XMR</h3><p>Доход в долларах напрямую зависит от курса монет. Диверсификация на две монеты снижает зависимость от одной.</p><b>Две монеты: ZEC и XMR</b></div>
+  <div class="rv"><span class="n">R3</span><h3>Халвинг ZEC</h3><p>С 30-го месяца награда Zcash падает вдвое. Учтено в расчёте: рост идёт за счёт X9.</p><b>Учтено в модели</b></div>
   <div class="rv"><span class="n">R4</span><h3>Регулирование</h3><p>Майнинг в РФ требует регистрации в реестре ФНС; в ряде регионов действуют сезонные ограничения.</p><b>Проверяется юристами</b></div>
-  <div class="rv"><span class="n">R5</span><h3>Энергия</h3><p>Собственная газовая генерация фиксирует себестоимость электроэнергии и снижает зависимость от сети.</p><b>$0,045/кВт·ч в модели</b></div>
+  <div class="rv"><span class="n">R5</span><h3>Энергия</h3><p>Собственная газовая генерация фиксирует себестоимость электроэнергии и снижает зависимость от сети.</p><b>Газопоршневые установки</b></div>
   <div class="rv"><span class="n">R6</span><h3>Оборудование</h3><p>Иммерсионное охлаждение снижает перегрев и износ ASIC, продлевая срок службы.</p><b>FOG Hashing</b></div>
  </div>
 </div></section>
 
 <div class="band"><img src="img/n_macro.webp" alt="" data-px style="object-position:center 60%"><div class="q"><span>Иммерсионное охлаждение — <em>тише, холоднее, дольше</em></span></div></div>
-<section id="project"><div class="w sec" data-n="08">
- <div class="head rv"><span class="lab">08 — Объект</span><div><h2>Площадка в Добрянке</h2><p>Собственная газовая генерация, иммерсионное охлаждение FOG Hashing, административный корпус.</p></div></div>
+<section id="project"><div class="w sec" data-n="07">
+ <div class="head rv"><span class="lab">07 — Объект</span><div><h2>Площадка в Добрянке</h2><p>Собственная газовая генерация, иммерсионное охлаждение FOG Hashing, административный корпус.</p></div></div>
  <div class="mosaic">
   <figure class="m1 rv"><img src="img/n_hall.webp" alt="Иммерсионный зал" loading="lazy" decoding="async"><figcaption><b>01</b>Иммерсионный зал</figcaption></figure>
   <figure class="m2 rv"><img src="img/n_macro.webp" alt="ASIC в диэлектрической жидкости" loading="lazy" decoding="async"><figcaption><b>02</b>ASIC в диэлектрической жидкости</figcaption></figure>
@@ -397,83 +385,63 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
 <section id="contact" class="cta-s"><div class="w">
  <span class="lab rv">Следующий шаг</span>
  <h2 class="rv">Получите инвестиционный меморандум<br>и полную финансовую модель</h2>
- <div class="cta-a rv"><a class="btn p" href="mailto:Zommer1282@gmail.com?subject=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%9F%D0%B5%D1%80%D0%BC%D1%8C%20%E2%80%94%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2">Запросить материалы</a><a class="btn" href="Пермь.xlsx" download>Скачать модель .xlsx</a></div>
- <p class="note rv">Материалы носят информационный характер и не являются публичной офертой. Расчёты основаны на данных WhatToMine на 20.11.2026 и не гарантируют доходность.</p>
+ <div class="cta-a rv"><a class="btn p" href="mailto:Zommer1282@gmail.com?subject=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%9F%D0%B5%D1%80%D0%BC%D1%8C%20%E2%80%94%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2">Запросить материалы</a><a class="btn" href="Perm_model.xlsx" download="Пермь — модель.xlsx">Скачать модель .xlsx</a></div>
+ <p class="note rv">Материалы носят информационный характер и не являются публичной офертой. Расчёты основаны на расчётной таблице проекта и не гарантируют доходность.</p>
 </div></section>
-<footer><div class="w"><a class="brand" href="#top"><img src="img/mark.svg" alt="">ЭНЕРДЖИ ТЕХНОЛОДЖИ ГРУПП</a><span class="mono">Модель «Пермь» · WhatToMine 20.11.2026</span></div></footer>
+<footer><div class="w"><a class="brand" href="#top"><img src="img/mark.svg" alt="">ЭНЕРДЖИ ТЕХНОЛОДЖИ ГРУПП</a><span class="mono">Модель «Пермь» · расчётная таблица проекта</span></div></footer>
 
 <script>
-const D={z_rev:28.40,z_kw:2.56,z_price:9345,x_rev:30.47,x_kw:2.472,x_price:7288,el:0.045,pool:0.02,decay:0,start:581,x_from:23,halving:24,r1:0.5,r2:0.2,i1:0.4,i2:0.4};
+// ===== data: «майнинг в России2 (2).xlsx», Лист3 — без изменений
+const T=[[1, 488040, 1488, 581, 501264, 250632, 200505, 50126, 21840], [2, 509880, 1553, 607, 522682, 261341, 209072, 52268, 23520], [3, 533400, 1626, 635, 544175, 272087, 217670, 54417, 25200], [4, 558600, 1703, 665, 569228, 284614, 227691, 56922, 25200], [5, 583800, 1780, 695, 592731, 296365, 237092, 59273, 26040], [6, 609840, 1859, 726, 614958, 307479, 245983, 61495, 26880], [7, 636720, 1941, 758, 641400, 320700, 256560, 64140, 28560], [8, 665280, 2028, 792, 669366, 334683, 267746, 66936, 29400], [9, 694680, 2118, 827, 694925, 347462, 277970, 69492, 31080], [10, 725760, 2212, 864, 724459, 362229, 289783, 72445, 32760], [11, 758520, 2312, 903, 791636, 395818, 316654, 79163, 35280], [12, 793800, 2420, 945, 829696, 414848, 331878, 82969, 36960], [13, 830760, 2532, 989, 865209, 432604, 346083, 86520, 38640], [14, 869400, 2650, 1035, 913173, 456586, 365269, 91317, 41160], [15, 910560, 2775, 1084, 959407, 479703, 383762, 95940, 42840], [16, 953400, 2906, 1135, 979304, 489652, 391721, 97930, 43680], [17, 997080, 3039, 1187, 1022749, 511374, 409099, 102274, 46200], [18, 1043280, 3180, 1242, 1070248, 535124, 428099, 107024, 47880], [19, 1091160, 3326, 1299, 1112565, 556282, 445026, 111256, 50400], [20, 1141560, 3479, 1359, 1168292, 584145, 467316, 116829, 52080], [21, 1193640, 3638, 1421, 1215125, 607562, 486050, 121512, 54600], [22, 1248240, 3805, 1486, 1270250, 635125, 508100, 127025, 57120], [23, 1305360, 3978, 1554, 1322982, 661491, 529192, 132298, 59640], [24, 1365000, 4160, 1625, 1377352, 688676, 550940, 137735, 61320], [25, 1426320, 4347, 1698, 1424926, 712463, 569970, 142492, 63840], [26, 1490160, 4542, 1774, 1478527, 739263, 591410, 147852, 66360], [27, 1556520, 4744, 1853, 1461275, 730637, 584510, 146127, 65520], [28, 1622040, 4944, 1931, 1510621, 755310, 604248, 151062, 67200], [29, 1689240, 5148, 2011, 1533493, 766746, 613397, 153349, 68880], [30, 1758120, 5358, 2093, 851733, 170346, 340693, 340693, 15120], [30, 131000, 328, 131, 113346, 22669, 45338, 45338, 30000], [31, 161000, 403, 161, 134999, 27000, 54000, 54000, 30000], [32, 191000, 478, 191, 159312, 31862, 63724, 63724, 31000], [33, 222000, 555, 222, 187385, 37475, 74950, 74950, 32000], [34, 254000, 635, 254, 212552, 42510, 85020, 85020, 33000], [35, 287000, 718, 287, 242312, 48462, 96924, 96924, 34000], [36, 321000, 803, 321, 276169, 55233, 110467, 110467, 35000], [37, 356000, 891, 356, 291150, 58230, 116460, 116460, 35000], [38, 391000, 978, 391, 299148, 59829, 119659, 119659, 35000], [39, 426000, 1065, 426, 328752, 65750, 131500, 131500, 35000], [40, 462000, 1155, 462, 327226, 65445, 130890, 130890, 36000], [41, 498000, 1245, 498, 382892, 76578, 153156, 153156, 36000], [42, 536000, 1349, 536, 405638, 81127, 162255, 162255, 38000], [43, 574000, 1435, 574, 440333, 88066, 176133, 176133, 39000], [44, 613000, 1533, 613, 506955, 101391, 202782, 202782, 41000], [45, 654000, 1635, 654, 496031, 99206, 198412, 198412, 41000], [46, 695000, 1738, 695, 518151, 103630, 207260, 207260, 42000], [47, 737000, 1843, 737, 547709, 109541, 219083, 219083, 43000], [48, 780000, 1950, 780, 584583, 116916, 233833, 233833, 44000], [49, 824000, 2060, 824, 595173, 119034, 238069, 238069, 44000], [50, 868000, 2170, 868, 618978, 123795, 247591, 247591, 45000], [51, 913000, 2283, 913, 648823, 129764, 259529, 259529, 46000], [52, 959000, 2398, 959, 681743, 136348, 272697, 272697, 47000], [53, 1006000, 2515, 1006, 702822, 168677, 281128, 281128, 52000], [54, 1058000, 2645, 1058, 755854, 151170, 302341, 302341, 49000], [55, 1107000, 2768, 1107, 766424, 153284, 323630, 323630, 50000], [56, 1157000, 2893, 1157, 806863, 161372, 322745, 322745, 51000], [57, 1208000, 3020, 1208, 836730, 167346, 334692, 334692, 52000], [58, 1260000, 3150, 1260, 858156, 171631, 343262, 343262, 52000], [59, 1312000, 3280, 1312, 890870, 178174, 356348, 356348, 53000], [60, 1365000, 3413, 1365, 911529, 182305, 364611, 364611, null]]; // [месяц, H/s, электричество, асики, общий доход, реинвест, инвестор, компания, H/s+]
 const fmt=n=>Math.round(n).toLocaleString("ru-RU");
 const fM=n=>"$"+(n/1e6).toLocaleString("ru-RU",{minimumFractionDigits:1,maximumFractionDigits:1})+"M";
-const G=[["Парк",[["start","Стартовый парк Z15 Pro",100,2000,1,v=>fmt(v)+" шт."],["x_from","Закупка X9 с месяца",1,61,1,v=>v>60?"нет":v],["halving","Халвинг ZEC с месяца",1,61,1,v=>v>60?"нет":v]]],
-["Доходность",[["z_rev","Z15 Pro, $/сутки",5,60,.1,v=>"$"+v.toFixed(2)],["x_rev","X9, $/сутки",5,60,.1,v=>"$"+v.toFixed(2)],["el","Электроэнергия, $/кВт·ч",0,.12,.001,v=>"$"+v.toFixed(3)],["pool","Комиссия пула",0,.05,.005,v=>(v*100).toFixed(1)+"%"],["decay","Падение доходности, %/мес",0,.05,.0025,v=>(v*100).toFixed(2)+"%"]]],
-["Цены ASIC",[["z_price","Z15 Pro",3000,15000,5,v=>"$"+fmt(v)],["x_price","X9",3000,15000,5,v=>"$"+fmt(v)]]],
-["Распределение",[["r1","Реинвест до окупаемости",0,.9,.05,v=>Math.round(v*100)+"%"],["r2","Реинвест после окупаемости",0,.9,.05,v=>Math.round(v*100)+"%"]]]];
-let P={...D};let _raf=0;const sched=()=>{if(_raf)return;_raf=requestAnimationFrame(()=>{_raf=0;upd()})};
-function model(p){const d=30,el=24*d*p.el,dec=p.decay||0,inv=p.start*p.z_price;let B=p.start,C=0,rem=0,cum=0,pb=null,R=[];
- for(let m=1;m<=60;m++){const f=Math.pow(1-dec,m-1),zr=p.z_rev*f*(m>=p.halving?.5:1),xr=p.x_rev*f;
-  const zu=Math.max(0,zr*d*(1-p.pool)-p.z_kw*el),xu=Math.max(0,xr*d*(1-p.pool)-p.x_kw*el);
-  const zi=B*zu,xi=C*xu,F=zi+xi,be=cum<inv;
-  const r=be?p.r1:p.r2,ip=be?p.i1:p.i2,M=F*r,I=F*ip,K=F-M-I;cum+=I;if(pb===null&&cum>=inv)pb=m;
-  const bud=M+rem,q=m<p.x_from?Math.floor(bud/p.z_price):0,x=m>=p.x_from?Math.floor(bud/p.x_price):0;rem=bud-q*p.z_price-x*p.x_price;
-  R.push({m,B,C,zi,xi,F,r,M,I,K,cum,q,x});B+=q;C+=x}
- const T=k=>R.reduce((s,o)=>s+o[k],0);return{R,pb,inv,F:T("F"),M:T("M"),I:T("I"),K:T("K"),B,C}}
-const box=document.getElementById("sliders");
-G.forEach(([g,list])=>{let h=`<div class="grp"><span class="lab">${g}</span>`;list.forEach(([k,l,a,b,s])=>h+=`<div class="sl"><div class="r"><span>${l}</span><b id="v_${k}"></b></div><input type=range id="s_${k}" min=${a} max=${b} step=${s}></div>`);box.insertAdjacentHTML("beforeend",h+"</div>")});
-const ALL=G.flatMap(g=>g[1]);
-ALL.forEach(([k])=>{const e=document.getElementById("s_"+k);e.value=P[k];e.oninput=()=>{P[k]=+e.value;sched()}});
-document.getElementById("reset").onclick=()=>{P={...D};ALL.forEach(([k])=>document.getElementById("s_"+k).value=P[k]);upd()};
+const PB=29,SW=30,START=581,Z_PRICE=9345;
+const b=(()=>{let cum=0;const R=T.map((t,i)=>{const x9=i>=SW;cum+=t[6];
+  return{m:t[0],lab:i===SW-1?"30 · Z15":i===SW?"30 · X9":String(t[0]),hs:t[1],el:t[2],n:t[3],B:x9?T[SW-1][3]:t[3],C:x9?t[3]:0,F:t[4],M:t[5],I:t[6],K:t[7],add:t[8],cum,x9}});
+ const S=k=>R.reduce((s,o)=>s+o[k],0);
+ return{R,pb:PB,inv:START*Z_PRICE,F:S("F"),M:S("M"),I:S("I"),K:S("K"),B:T[SW-1][3],C:T[T.length-1][3]}})();
+const last=b;
 const css=getComputedStyle(document.documentElement),c=v=>css.getPropertyValue(v).trim();
 Chart.defaults.color=c("--mu");Chart.defaults.borderColor=c("--ln");Chart.defaults.font.family="JetBrains Mono";Chart.defaults.font.size=11;
 Chart.defaults.plugins.legend.display=false;
 Object.assign(Chart.defaults.plugins.tooltip,{backgroundColor:"#0b0c0e",borderColor:c("--ln2"),borderWidth:1,cornerRadius:0,padding:10,boxWidth:8,boxHeight:8});
 const CU=c("--cu"),CU2=c("--cu2"),GR=c("--gr"),NV=c("--nv");
-const lab=Array.from({length:60},(_,i)=>i+1);
+const lab=b.R.map(r=>r.lab);
 const ax={grid:{display:false},border:{color:c("--ln2")},ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:12}};
 const ay=f=>({grid:{color:c("--ln")},border:{display:false},ticks:{callback:f,maxTicksLimit:6}});
 const tip={callbacks:{title:x=>"Месяц "+x[0].label,label:x=>" "+x.dataset.label+"  $"+fmt(x.raw)}};
-const MK={pb:null,hv:24};
 const markers={id:"markers",afterDatasetsDraw(ch,a,o){if(!o||!o.on)return;const {ctx,chartArea:ca,scales:{x}}=ch;
- [[MK.pb,"ОКУПАЕМОСТЬ",GR],[MK.hv,"ХАЛВИНГ ZEC",CU2]].forEach(([m,t,col],i)=>{const yo=ca.top+i*24;if(!m||m>60)return;const px=x.getPixelForValue(m-1);
+ [[PB-1,"ОКУПАЕМОСТЬ · 29",GR],[SW,"ХАЛВИНГ И X9 · 30",CU2]].forEach(([ix,t,col],i)=>{const yo=ca.top+i*24;const px=x.getPixelForValue(ix);
   ctx.save();ctx.strokeStyle=col;ctx.setLineDash([3,4]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(px,ca.top);ctx.lineTo(px,ca.bottom);ctx.stroke();
-  ctx.setLineDash([]);ctx.font="500 10px JetBrains Mono";const w=ctx.measureText(t+" · "+m).width+12;
-  ctx.fillStyle="#0b0c0e";ctx.fillRect(px+4,yo,w,18);ctx.strokeRect(px+4,yo,w,18);ctx.fillStyle=col;ctx.fillText(t+" · "+m,px+10,yo+12.5);ctx.restore()})}};
+  ctx.setLineDash([]);ctx.font="500 10px JetBrains Mono";const w=ctx.measureText(t).width+12;
+  ctx.fillStyle="#0b0c0e";ctx.fillRect(px+4,yo,w,18);ctx.strokeRect(px+4,yo,w,18);ctx.fillStyle=col;ctx.fillText(t,px+10,yo+12.5);ctx.restore()})}};
 const cross={id:"cross",afterDraw(ch){const a=ch.tooltip&&ch.tooltip.getActiveElements();if(!a||!a.length||ch.config.options.indexAxis==="y")return;
  const {ctx,chartArea:ca}=ch,x=a[0].element.x;ctx.save();ctx.strokeStyle="rgba(236,234,230,.25)";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,ca.top);ctx.lineTo(x,ca.bottom);ctx.stroke();ctx.restore()}};
 Chart.register(markers,cross);
 const grad=(col,a1,a2)=>c2=>{const {ctx,chartArea:ca}=c2.chart;if(!ca)return col;const g=ctx.createLinearGradient(0,ca.top,0,ca.bottom);g.addColorStop(0,col.replace("A",a1));g.addColorStop(1,col.replace("A",a2));return g};
 const mk=(id,cfg)=>new Chart(document.getElementById(id),cfg);
-const cMain=mk("cMain",{type:"bar",data:{labels:lab,datasets:[{label:"Реинвест",backgroundColor:grad("rgba(200,119,74,A)",1,.7)},{label:"Инвестор",backgroundColor:grad("rgba(236,211,180,A)",1,.55)},{label:"Компания",backgroundColor:grad("rgba(138,128,118,A)",.95,.6)}].map(d=>({...d,data:[],stack:"a",barPercentage:.72,categoryPercentage:1,borderRadius:{topLeft:1,topRight:1}}))},
- options:{maintainAspectRatio:false,animation:{duration:300},interaction:{mode:"index",intersect:false},plugins:{tooltip:tip,markers:{on:true}},scales:{x:{...ax,stacked:true},y:{...ay(v=>"$"+v/1e3+"k"),stacked:true}}}});
-const cFleet=mk("cFleet",{type:"line",data:{labels:lab,datasets:[{label:"Z15 Pro",borderColor:CU2,backgroundColor:grad("rgba(226,162,122,A)",.35,.02)},{label:"X9",borderColor:GR,backgroundColor:grad("rgba(236,211,180,A)",.45,.04)}].map(d=>({...d,data:[],fill:true,pointRadius:0,borderWidth:1.5,stack:"f"}))},
+const R=b.R;
+mk("cMain",{type:"bar",data:{labels:lab,datasets:[{label:"Реинвест",data:R.map(r=>r.M),backgroundColor:grad("rgba(200,119,74,A)",1,.7)},{label:"Инвестор",data:R.map(r=>r.I),backgroundColor:grad("rgba(236,211,180,A)",1,.55)},{label:"Компания",data:R.map(r=>r.K),backgroundColor:grad("rgba(138,128,118,A)",.95,.6)}].map(d=>({...d,stack:"a",barPercentage:.72,categoryPercentage:1,borderRadius:{topLeft:1,topRight:1}}))},
+ options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{tooltip:tip,markers:{on:true}},scales:{x:{...ax,stacked:true},y:{...ay(v=>"$"+v/1e3+"k"),stacked:true}}}});
+mk("cFleet",{type:"line",data:{labels:lab,datasets:[{label:"Z15 Pro",data:R.map(r=>r.B),borderColor:CU2,backgroundColor:grad("rgba(226,162,122,A)",.35,.02)},{label:"X9",data:R.map(r=>r.C),borderColor:GR,backgroundColor:grad("rgba(236,211,180,A)",.45,.04)}].map(d=>({...d,fill:true,pointRadius:0,borderWidth:1.5,stack:"f"}))},
  options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{markers:{on:true},tooltip:{callbacks:{title:tip.callbacks.title,label:x=>" "+x.dataset.label+"  "+fmt(x.raw)+" шт."}}},scales:{x:ax,y:{...ay(v=>fmt(v)),stacked:true}}}});
-const cCum=mk("cCum",{type:"line",data:{labels:lab,datasets:[{label:"Выплачено",data:[],borderColor:GR,backgroundColor:grad("rgba(236,211,180,A)",.4,0),fill:true,pointRadius:0,borderWidth:2,tension:.3},{label:"Вложения",data:[],borderColor:CU2,borderDash:[4,4],pointRadius:0,borderWidth:1}]},
+mk("cCum",{type:"line",data:{labels:lab,datasets:[{label:"Выплачено",data:R.map(r=>r.cum),borderColor:GR,backgroundColor:grad("rgba(236,211,180,A)",.4,0),fill:true,pointRadius:0,borderWidth:2,tension:.3},{label:"Стартовый парк",data:R.map(()=>b.inv),borderColor:CU2,borderDash:[4,4],pointRadius:0,borderWidth:1}]},
  options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{tooltip:tip,markers:{on:true}},scales:{x:ax,y:ay(v=>"$"+v/1e6+"M")}}});
-const cYear=mk("cYear",{type:"bar",data:{labels:["Год 1","Год 2","Год 3","Год 4","Год 5"],datasets:[{label:"Z15 Pro",data:[],backgroundColor:grad("rgba(226,162,122,A)",1,.5)},{label:"X9",data:[],backgroundColor:grad("rgba(236,211,180,A)",1,.5)}].map(d=>({...d,barPercentage:.42}))},
+const yr=f=>[1,2,3,4,5].map(y=>R.filter(r=>Math.ceil(r.m/12)===y&&f(r)).reduce((s,r)=>s+r.F,0));
+mk("cYear",{type:"bar",data:{labels:["Год 1","Год 2","Год 3","Год 4","Год 5"],datasets:[{label:"Z15 Pro",data:yr(r=>!r.x9),backgroundColor:grad("rgba(226,162,122,A)",1,.5)},{label:"X9",data:yr(r=>r.x9),backgroundColor:grad("rgba(236,211,180,A)",1,.5)}].map(d=>({...d,barPercentage:.42}))},
  options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{tooltip:{callbacks:{label:tip.callbacks.label}}},scales:{x:{...ax,stacked:true},y:{...ay(v=>"$"+v/1e6+"M"),stacked:true}}}});
-const cPie=mk("cPie",{type:"bar",data:{labels:["Реинвест","Инвестор","Компания"],datasets:[{label:"За 60 мес.",data:[],backgroundColor:[CU,GR,NV],barPercentage:.6}]},
+mk("cPie",{type:"bar",data:{labels:["Реинвест","Инвестор","Компания"],datasets:[{label:"За 60 мес.",data:[b.M,b.I,b.K],backgroundColor:[CU,GR,NV],barPercentage:.6}]},
  options:{indexAxis:"y",maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:x=>" "+fM(x.raw)}}},scales:{x:ay(v=>"$"+v/1e6+"M"),y:{grid:{display:false},border:{color:c("--ln2")},ticks:{font:{family:"Inter Tight",size:13},color:c("--tx")}}}}});
-let last;
-const H=["Мес.","Z15 Pro","X9","Доход Z15","Доход X9","Чистый доход","Реинв. %","Реинвест","Инвестор","Компания","Инвестору нараст.","+Z15","+X9"];
-const rows=o=>o.R.map(r=>[r.m,r.B,r.C,r.zi,r.xi,r.F,Math.round(r.r*100)+"%",r.M,r.I,r.K,r.cum,r.q,r.x]);
-function upd(){ALL.forEach(([k,,,,,f])=>document.getElementById("v_"+k).textContent=f(P[k]));
- const o=model(P);last=o;MK.pb=o.pb;MK.hv=P.halving;if(window.extra){clearTimeout(window._hx);window._hx=setTimeout(extra,180)}if(window.mine)setTimeout(mine,0);const s=(i,v)=>document.getElementById(i).textContent=v;
- s("r1",o.pb??"> 60");s("r2",fM(o.I));s("r3",fM(o.K));s("r4",fM(o.M));s("r5",fM(o.F));s("r6",fmt(o.B)+" / "+fmt(o.C));
- [o.R.map(r=>r.M),o.R.map(r=>r.I),o.R.map(r=>r.K)].forEach((d,i)=>cMain.data.datasets[i].data=d);cMain.update("none");
- cFleet.data.datasets[0].data=o.R.map(r=>r.B);cFleet.data.datasets[1].data=o.R.map(r=>r.C);cFleet.update("none");
- cCum.data.datasets[0].data=o.R.map(r=>r.cum);cCum.data.datasets[1].data=o.R.map(()=>o.inv);cCum.update("none");
- const y=k=>[0,1,2,3,4].map(i=>o.R.slice(i*12,i*12+12).reduce((t,r)=>t+r[k],0));
- cYear.data.datasets[0].data=y("zi");cYear.data.datasets[1].data=y("xi");cYear.update("none");
- cPie.data.datasets[0].data=[o.M,o.I,o.K];cPie.update("none");
- const tb=document.getElementById("tb"),sum=k=>fmt(o.R.reduce((t,r)=>t+r[k],0));
- tb.innerHTML="<thead><tr>"+H.map(h=>`<th>${h}</th>`).join("")+"</tr></thead><tbody>"+rows(o).map((a,i)=>`<tr class="${i+1===o.pb?"pb":i+1===P.halving?"hv":""}">`+a.map((v,j)=>`<td>${j===0?String(v).padStart(2,"0"):typeof v==="number"?fmt(v):v}</td>`).join("")+"</tr>").join("")+
- `</tbody><tfoot><tr><th>Итого</th><th></th><th></th><th>${sum("zi")}</th><th>${sum("xi")}</th><th>${fmt(o.F)}</th><th></th><th>${fmt(o.M)}</th><th>${fmt(o.I)}</th><th>${fmt(o.K)}</th><th></th><th></th><th></th></tr></tfoot>`}
-document.getElementById("xls").onclick=async()=>{if(!window.XLSX)await new Promise((ok,er)=>{const s=document.createElement("script");s.src="vendor/xlsx.full.min.js";s.onload=ok;s.onerror=er;document.head.appendChild(s)});const ws=XLSX.utils.aoa_to_sheet([H,...rows(last).map(r=>r.map(v=>typeof v==="number"?Math.round(v):v))]);const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Пермь");XLSX.writeFile(wb,"Пермь_расчёт.xlsx")};
-upd();
-const b=model(D);
+{const s=(i,v)=>document.getElementById(i).textContent=v;
+ s("r1",PB);s("r2",fM(b.I));s("r3",fM(b.K));s("r4",fM(b.M));s("r5",fM(b.F));s("r6",fmt(b.B)+" / "+fmt(b.C));
+ const H=["Месяц","Скорость H/s","Электричество","Асики кол-во","Общий доход","Реинвест","Инвестор","Компания","H/s+"];
+ document.getElementById("tb").innerHTML="<thead><tr>"+H.map(h=>`<th>${h}</th>`).join("")+"</tr></thead><tbody>"+
+  R.map((r,i)=>`<tr class="${r.m===PB?"pb":r.m===SW?"hv":""}"><td>${r.lab}</td>`+[r.hs,r.el,r.n,r.F,r.M,r.I,r.K,r.add].map(v=>`<td>${v==null?"":fmt(v)}</td>`).join("")+"</tr>").join("")+
+  `</tbody><tfoot><tr><th>Итого</th><th></th><th></th><th></th><th>${fmt(b.F)}</th><th>${fmt(b.M)}</th><th>${fmt(b.I)}</th><th>${fmt(b.K)}</th><th></th></tr></tfoot>`;
+ s("t_inv","$"+fmt(b.inv)+" (581 × $9 345)");s("t_pb",PB+"-й месяц");s("t_i","$"+fmt(b.I));}
+document.getElementById("xls").onclick=()=>{const a=document.createElement("a");a.href="Perm_model.xlsx";a.download="Пермь — модель.xlsx";a.click()};
 const roll=(id,to,f)=>{const e=document.getElementById(id),t0=performance.now();const st=t=>{const k=Math.min(1,(t-t0)/1400),v=to*(1-Math.pow(1-k,3));e.innerHTML=f(v);if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)};
-roll("k1",b.pb,v=>Math.round(v)+"<small>мес.</small>");
+roll("k1",PB,v=>Math.round(v)+"<small>мес.</small>");
 roll("k2",b.I,v=>"$"+(v/1e6).toFixed(1).replace(".",",")+"<small>млн</small>");
 roll("k3",b.F,v=>"$"+(v/1e6).toFixed(1).replace(".",",")+"<small>млн</small>");
 roll("k4",b.B+b.C,v=>fmt(v)+"<small>ASIC</small>");
@@ -482,29 +450,28 @@ document.querySelectorAll(".rv").forEach((e,i)=>{e.style.transitionDelay=(i%4)*7
 const PX=[...document.querySelectorAll("[data-px]")];
 const onS=()=>{document.getElementById("hd").classList.toggle("s",scrollY>20);PX.forEach(i=>{const r=i.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;i.style.transform=`translateY(${(r.top/innerHeight-.5)*-12}%)`})};
 let _st=0;addEventListener("scroll",()=>{if(_st)return;_st=requestAnimationFrame(()=>{_st=0;onS()})},{passive:true});onS();
-// ===== personal calc
+// ===== personal calc (доля от стартового парка × выплаты инвестору по таблице)
 const fmtUSD=n=>n>=1e6?"$"+(n/1e6).toLocaleString("ru-RU",{maximumFractionDigits:2})+"M":"$"+fmt(n);
-function mine(){const o=last,inp=document.getElementById("myinv");if(!o||!inp)return;const a=Math.max(0,+inp.value||0),sh=a/o.inv;
+function mine(){const o=b,inp=document.getElementById("myinv");const a=Math.max(0,+inp.value||0),sh=a/o.inv;
  document.getElementById("m1").textContent=(sh*100).toLocaleString("ru-RU",{maximumFractionDigits:2})+"%";
  document.getElementById("m1s").textContent="от стартового парка "+fmtUSD(o.inv);
  document.getElementById("m2").textContent=fmtUSD(o.I*sh);
- document.getElementById("m2s").textContent=o.pb?"окупаемость на "+o.pb+"-м месяце":"окупаемости нет за 60 мес.";
+ document.getElementById("m2s").textContent="окупаемость на "+PB+"-м месяце";
  document.getElementById("m3").textContent="×"+(a?(o.I*sh/a).toFixed(2).replace(".",","):"0");
- const after=o.pb?o.R.slice(o.pb):[];document.getElementById("m4").textContent=after.length?fmtUSD(after.reduce((s,r)=>s+r.I,0)/after.length*sh):"—"}
-window.mine=mine;
+ const after=o.R.filter((r,i)=>i>=PB).reduce((s,r)=>s+r.I,0)/(60-PB);document.getElementById("m4").textContent=fmtUSD(after*sh)}
 document.getElementById("myinv").addEventListener("input",mine);
 document.querySelectorAll(".mine .ch2 button").forEach(x=>x.onclick=()=>{document.getElementById("myinv").value=x.dataset.v;mine()});
 mine();
 // ===== marquee
-(()=>{const it=[["ZEC","Z15 Pro · 840 kSol/s"],["XMR","X9 · 1 MH/s"],["Окупаемость",b.pb+" мес."],["Инвестору","$"+(b.I/1e6).toFixed(1)+"M"],["Пул","2%"],["Электроэнергия","$0,045/кВт·ч"],["Халвинг ZEC","24 мес."],["Парк на 60 мес.",fmt(b.B+b.C)+" ASIC"]];
+(()=>{const it=[["Старт","581 Z15 Pro"],["Окупаемость",PB+" мес."],["Инвестору","$"+(b.I/1e6).toFixed(1)+"M"],["Общий доход","$"+(b.F/1e6).toFixed(1)+"M"],["Распределение","50/40/10 → 20/40/40"],["С 30-го месяца","X9 на Monero"],["X9 на 60-й мес.",fmt(b.C)+" шт."]];
  const h=it.map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join("");document.getElementById("mqt").innerHTML=h+h})();
 // ===== timeline
-(()=>{const R=b.R,r=m=>R[m-1];
- const M=[[1,"Старт","Запуск стартового парка. Половина дохода уходит на покупку новых Z15 Pro.",[["Парк",fmt(r(1).B)+" Z15 Pro"],["Доход в месяц","$"+fmt(r(1).F)],["Реинвест","50%"]]],
- [b.pb,"Окупаемость","Инвестору выплачена сумма вложений. Реинвест снижается до 20%, выплаты растут.",[["Выплачено инвестору","$"+fmt(r(b.pb).cum)],["Парк",fmt(r(b.pb).B)+" Z15 Pro"],["Распределение","20 / 40 / 40"]]],
- [23,"Переход на X9","Реинвест идёт в Antminer X9 на Monero. Z15 Pro продолжают майнить.",[["Z15 Pro",fmt(r(23).B)],["Первая закупка X9",fmt(r(23).x)+" шт."],["Доход в месяц","$"+fmt(r(23).F)]]],
- [24,"Халвинг ZEC","Награда за блок Zcash падает вдвое. Доход Z15 Pro — $335 вместо $752 в месяц.",[["Доход в месяц","$"+fmt(r(24).F)],["X9 в работе",fmt(r(24).C)],["У Monero","халвинга нет"]]],
- [60,"Итог","Пять лет работы фермы с реинвестированием.",[["Парк",fmt(b.B)+" Z15 + "+fmt(b.C)+" X9"],["Инвестору всего","$"+fmt(b.I)],["Чистый доход","$"+fmt(b.F)]]]];
+(()=>{const r=i=>R[i];
+ const M=[[1,"Старт","Запуск стартового парка. Половина дохода уходит на покупку новых Z15 Pro.",[["Парк",fmt(r(0).n)+" Z15 Pro"],["Общий доход","$"+fmt(r(0).F)],["Реинвест","50%"]]],
+ [12,"Первый год","Парк растёт за счёт реинвеста, доход увеличивается каждый месяц.",[["Парк",fmt(r(11).n)+" Z15 Pro"],["Общий доход","$"+fmt(r(11).F)],["Инвестору","$"+fmt(r(11).I)]]],
+ [PB,"Окупаемость","Окупаемость проекта. Со следующего месяца распределение 20 / 40 / 40.",[["Парк",fmt(r(PB-1).n)+" Z15 Pro"],["Общий доход","$"+fmt(r(PB-1).F)],["Инвестору нараст.","$"+fmt(r(PB-1).cum)]]],
+ [30,"Халвинг и X9","Доход Z15 Pro падает вдвое. Реинвест направляется в Antminer X9 на Monero.",[["Доход Z15 Pro","$"+fmt(r(SW-1).F)],["X9 в работе",fmt(r(SW).n)+" шт."],["Доход X9","$"+fmt(r(SW).F)]]],
+ [60,"Итог","Пять лет работы фермы с реинвестированием.",[["X9 в работе",fmt(b.C)+" шт."],["Инвестору всего","$"+fmt(b.I)],["Общий доход","$"+fmt(b.F)]]]];
  document.getElementById("track").innerHTML=M.map(([m,h,p,d])=>`<div class="ms"><div class="mn">${String(m).padStart(2,"0")}</div><div class="mm">месяц ${m}</div><h3>${h}</h3><p>${p}</p><dl>${d.map(([a,v])=>`<dt>${a}</dt><dd>${v}</dd>`).join("")}</dl></div>`).join("")})();
 // ===== motion
 const pre=document.getElementById("pre"),preb=document.getElementById("preb");preb.style.width="60%";
@@ -526,31 +493,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",
  addEventListener("mousemove",e=>{x=e.clientX;y=e.clientY;c.style.opacity=1});
  (function f(){cx+=(x-cx)*.18;cy+=(y-cy)*.18;c.style.transform=`translate(${cx-14}px,${cy-14}px)`;requestAnimationFrame(f)})();
  document.querySelectorAll("a,button,input,.mosaic figure").forEach(el=>{el.addEventListener("mouseenter",()=>c.classList.add("big"));el.addEventListener("mouseleave",()=>c.classList.remove("big"))})})();
-
-// ===== scenarios
-const SC={base:{z_rev:D.z_rev,x_rev:D.x_rev,decay:0},cons:{z_rev:D.z_rev,x_rev:D.x_rev,decay:.02},stress:{z_rev:+(D.z_rev*.7).toFixed(1),x_rev:+(D.x_rev*.7).toFixed(1),decay:.03}};
-document.querySelectorAll("#scn button").forEach(bt=>bt.onclick=()=>{document.querySelectorAll("#scn button").forEach(x=>x.classList.toggle("on",x===bt));
- Object.assign(P,SC[bt.dataset.s]);ALL.forEach(([k])=>document.getElementById("s_"+k).value=P[k]);upd()});
-document.getElementById("reset").addEventListener("click",()=>document.querySelectorAll("#scn button").forEach((x,i)=>x.classList.toggle("on",i===0)));
-// ===== unit economics (static, base data)
-(()=>{const d=30,u=(name,sub,rev,kw,price)=>{const g=rev*d,pl=g*D.pool,e=kw*24*d*D.el,n=g-pl-e;
- const row=(a,v,c="")=>`<div class="ue-r ${c}"><span>${a}</span><b>${v}</b></div>`;
- return `<div class="ue-c"><h4>${name}<small>${sub}</small></h4>${row("Выручка WhatToMine","$"+fmt(g))}${row("Комиссия пула 2%","−$"+fmt(pl),"neg")}${row("Электроэнергия "+(kw*24*d).toFixed(0)+" кВт·ч","−$"+fmt(e),"neg")}${row("Чистый доход","$"+fmt(n),"tot")}${row("Окупаемость одного ASIC",(price/n).toFixed(1).replace(".",",")+" мес.")}<div class="ue-bar"><i style="width:${(n/g*100).toFixed(1)}%"></i></div><div class="ue-r"><span>Маржа после ЭЭ и пула</span><b>${Math.round(n/g*100)}%</b></div></div>`};
- document.getElementById("ue").innerHTML=u("Antminer Z15 Pro","Zcash · до халвинга",D.z_rev,D.z_kw,D.z_price)+u("Antminer X9","Monero",D.x_rev,D.x_kw,D.x_price)})();
-// ===== heatmap + terms
-const MUL=[.6,.7,.8,.9,1,1.1,1.2,1.3],ELS=[.03,.035,.04,.045,.05,.055,.06,.07];
-const hcol=pb=>!pb?"#1c1714":pb<=24?"#e2b48c":pb<=36?"#a8633d":"#5e3826";
-function extra(){const o=last;
- let h="<thead><tr><th></th>"+MUL.map(m=>`<th>${Math.round(m*100)}%</th>`).join("")+"</tr></thead><tbody>";
- ELS.forEach(e=>{h+=`<tr><th>$${e.toFixed(3)}</th>`;MUL.forEach(m=>{const r=model({...P,el:e,z_rev:P.z_rev*m,x_rev:P.x_rev*m});
-  const me=Math.abs(e-P.el)<.0026&&Math.abs(m-1)<.01;
-  h+=`<td class="${me?"me":""}" style="background:${hcol(r.pb)};color:${r.pb&&r.pb<=24?"#1a120c":"#f3e6d8"}" title="Инвестору за 60 мес.: ${fM(r.I)}">${r.pb?r.pb:"—"}<small>×${(r.I/r.inv).toFixed(1)}</small></td>`});h+="</tr>"});
- document.getElementById("hm").innerHTML=h+"</tbody>";
- document.getElementById("t_inv").textContent="$"+fmt(b.inv);
- document.getElementById("t_pb").textContent=b.pb+"-й месяц";
- document.getElementById("t_i").textContent="$"+fmt(b.I)+" (×"+(b.I/b.inv).toFixed(2).replace(".",",")+")"}
-window.extra=extra;extra();
-
 
 // pause off-screen CSS animations
 (()=>{const io2=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("paused",!e.isIntersecting)));document.querySelectorAll(".hero,.mq").forEach(el=>io2.observe(el))})();
