@@ -255,27 +255,27 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opa
 
 /* ===== light theme «Слоновая кость и медь» */
 html[data-theme=light]{
- --bg:#f5f0e8;--bg1:#ede5d9;--bg2:#e6dccd;--ln:#dccfbd;--ln2:#c9b8a1;
+ --bg:#faf7f2;--bg1:#f3ede4;--bg2:#ede5d9;--ln:#e3d8c9;--ln2:#d0c0aa;
  --tx:#1d1712;--mu:#6e6257;--dim:#9a8c7d;
  --cu:#b8632f;--cu2:#a9542a;--gr:#c79a6b;--nv:#7d7064;
- --hdr:rgba(245,240,232,.86);--ov1:rgba(245,240,232,.78);--ov2:rgba(245,240,232,.5);--cap:rgba(245,240,232,.9);
- --soft:#4a4038;--tip:#fffaf3;--xh:rgba(29,23,18,.22);--grain:.035;color-scheme:only light}
-html[data-theme=light] body{background:radial-gradient(1200px 600px at 85% -10%,#fbe9d6 0%,transparent 60%),var(--bg)}
-html[data-theme=light] .hero .bg{filter:sepia(.25) saturate(.9) brightness(1.08)}
+ --hdr:rgba(250,247,242,.9);--ov1:rgba(250,247,242,.8);--ov2:rgba(250,247,242,.66);--cap:rgba(250,247,242,.92);
+ --soft:#4a4038;--tip:#ffffff;--xh:rgba(29,23,18,.22);--grain:.015;color-scheme:only light;background:#faf7f2}
+html[data-theme=light] body{background:radial-gradient(1200px 600px at 85% -10%,#fdeedf 0%,transparent 60%),var(--bg)}
+html[data-theme=light] .hero .bg{filter:sepia(.12) saturate(.75) brightness(1.18) contrast(.92)}
 html[data-theme=light] .hero h1{color:#1d1712}
 html[data-theme=light] .hero h1 em{background:linear-gradient(100deg,#d98a55 0%,#a9542a 45%,#6e3418 70%,#c46f3c 100%);-webkit-background-clip:text;background-clip:text}
 html[data-theme=light] .btn.p{background:var(--tx);color:#f5f0e8}
 html[data-theme=light] .btn.p:hover{background:var(--cu);border-color:var(--cu);color:#fff}
-html[data-theme=light] .mq,html[data-theme=light] .mine .in{background:linear-gradient(180deg,#efe6d8,#ebe1d2)}
+html[data-theme=light] .mq,html[data-theme=light] .mine .in{background:linear-gradient(180deg,#f5efe6,#f1e9de)}
 html[data-theme=light] .cg>div,html[data-theme=light] .rk>div,html[data-theme=light] .res>div,html[data-theme=light] .mine .o>div{background:rgba(255,252,246,.55)}
 html[data-theme=light] .tw{background:#fffaf3}
-html[data-theme=light] th{background:#efe6d8}
+html[data-theme=light] th{background:#f3ece2}
 html[data-theme=light] tr.pb td{background:rgba(199,154,107,.18)}
 html[data-theme=light] tr.hv td{background:rgba(184,99,47,.12)}
 html[data-theme=light] .mosaic img{filter:brightness(.97) saturate(.95)}
 html[data-theme=light] .cta-s:before{opacity:.1;filter:sepia(.4)}
-html[data-theme=light] .band:after{background:linear-gradient(180deg,var(--bg),rgba(245,240,232,.15) 30%,rgba(245,240,232,.15) 70%,var(--bg))}
-html[data-theme=light] .band .q span{color:#1d1712;text-shadow:0 1px 24px rgba(245,240,232,.9)}
+html[data-theme=light] .band:after{background:linear-gradient(180deg,var(--bg),rgba(250,247,242,.35) 30%,rgba(250,247,242,.35) 70%,var(--bg))}
+html[data-theme=light] .band .q span{color:#1d1712;text-shadow:0 1px 24px rgba(250,247,242,.95)}
 html[data-theme=light] .sec:before{-webkit-text-stroke:1px #d9c8b2}
 html[data-theme=light] .ms .mn{-webkit-text-stroke:1px var(--cu)}
 ::selection{background:var(--cu2);color:var(--bg)}
@@ -293,7 +293,7 @@ html[data-theme=light] .tg .moon{opacity:0;transform:rotate(90deg) scale(.5)}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 html.tt,html.tt *{transition:background-color .5s,color .5s,border-color .5s!important}
 </style>
-<script>window.__th=l=>{document.getElementById("mcs").content=l?"only light":"dark";document.getElementById("mtc").content=l?"#f5f0e8":"#0b0c0e"};try{if(localStorage.getItem("theme")==="light"){document.documentElement.dataset.theme="light";__th(1)}}catch(e){}</script>
+<script>window.__th=l=>{document.getElementById("mcs").content=l?"only light":"dark";document.getElementById("mtc").content=l?"#faf7f2":"#0b0c0e"};try{if(localStorage.getItem("theme")==="light"){document.documentElement.dataset.theme="light";__th(1)}}catch(e){}</script>
 </head>
 <body>
 <div id="pre"><img src="img/mark.svg" alt=""><div class="bar"><i id="preb"></i></div><span class="lab">Энерджи Технолоджи Групп</span></div><div id="cur"></div>
